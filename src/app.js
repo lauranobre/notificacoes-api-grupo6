@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
+const logger = require("./middlewares/logger");
+
 
 //DESAFIO
 const InscricaoController = require('./controllers/InscricaoController');
@@ -16,6 +18,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //DESAFIO
 app.get('/inscricoes/:id/detalhes', InscricaoController.obterDetalhes);
 
+// Logger
+app.use(logger);
 
 // Importar rotas
 const eventoRoutes = require("./routes/eventoRoutes");
