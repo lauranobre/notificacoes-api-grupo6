@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
-const logger = require("./middlewares/logger");
+const logger = require("./middleware/logger");
 
 
 //DESAFIO
