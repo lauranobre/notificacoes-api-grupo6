@@ -4,7 +4,7 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 const logger = require("./middleware/logger");
-
+const cors = require("cors");
 
 //DESAFIO
 const InscricaoController = require('./controllers/InscricaoController');
@@ -20,6 +20,9 @@ app.get('/inscricoes/:id/detalhes', InscricaoController.obterDetalhes);
 
 // Logger
 app.use(logger);
+
+//CORS:
+app.use(cors());
 
 // Importar rotas
 const eventoRoutes = require("./routes/eventoRoutes");
