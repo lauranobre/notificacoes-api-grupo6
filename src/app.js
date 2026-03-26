@@ -1,29 +1,30 @@
-// src/app.js
 const express = require("express");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
-const logger = require("./middleware/logger");
 const cors = require("cors");
+
+
+const logger = require("./middleware/logger");
+const responseTime = require("./middleware/responseTime");
 const notFound = require("./middleware/notFound");
+const errorHandler = require("./middleware/errorHandler");
 
 //DESAFIO
 const InscricaoController = require('./controllers/InscricaoController');
 
-// Middleware para ler JSON no body das requisições
+// Middlewares globais
 app.use(express.json());
+app.use(cors());
+
+app.use(logger);
+app.use(responseTime);
 
 // Documentação Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //DESAFIO
 app.get('/inscricoes/:id/detalhes', InscricaoController.obterDetalhes);
-
-// Logger
-app.use(logger);
-
-//CORS:
-app.use(cors());
 
 // Importar rotas
 const eventoRoutes = require("./routes/eventoRoutes");
@@ -37,7 +38,7 @@ app.use("/inscricoes", inscricaoRoutes);
 
 // Rota raiz (informativa)
 app.get("/", (req, res) => {
-    res.json({ 
+    res.json({
         mensagem: "API de Notificações",
         rotas: {
             eventos: "/eventos",
@@ -48,5 +49,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;

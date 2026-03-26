@@ -1,23 +1,29 @@
 const EventoModel = require("../models/EventoModel");
+const { NotFoundError, ValidationError } = require("../errors/AppError");
 
 // GET /eventos - listar todos 
-function index(req, res) {
-    const eventos = EventoModel.listarTodos(); // o req recenbe a requisição
-    res.json(eventos);
+function index(req, res, next) {
+    try {
+        const eventos = EventoModel.listarTodos();
+        res.json(eventos);
+    } catch (erro) {
+        next(erro);
+    }
 }
 
 // GET /eventos/:id - buscar por ID
-function show(req, res) {
-    const id = parseInt(req.params.id);
-    const evento = EventoModel.buscarPorId(id);
-
-    if (!evento) {
-        return res.status(404).json({ erro: "Evento não encontrado" });
+function show(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const evento = EventoModel.buscarPorId(id);
+        if (!evento) {
+            throw new NotFoundError("Evento");
+        }
+        res.json(evento);
+    } catch (erro) {
+        next(erro);
     }
-
-    res.json(evento);
 }
-
 /* Explicação da função show
 - Recebe o id do evento a ser buscado.
 - Encontra o id do evento.
@@ -26,34 +32,24 @@ function show(req, res) {
 */
 
 // POST /eventos - criar um novo evento (desafio feito com IA)
-function store(req, res) {
-    const { nome, descricao, data, local, capacidade } = req.body;
+function store(req, res, next) {
+    try {
+        const { nome, descricao, data, local, capacidade } = req.body;
+        if (!nome || !data) {
+            throw new ValidationError("Nome e data são obrigatórios");
+        }
+        const novoEvento = EventoModel.criar({
+            nome,
+            descricao,
+            data,
+            local,
 
-    // 1. Validação do Nome (obrigatório e não vazio)
-    if (!nome || nome.trim() === "") {
-        return res.status(400).json({ erro: "O nome do evento é obrigatório e não pode ser vazio." });
+            capacidade,
+        });
+        res.status(201).json(novoEvento);
+    } catch (erro) {
+        next(erro);
     }
-
-    // Validação da Data (já existia no seu código)
-    if (!data) {
-        return res.status(400).json({ erro: "A data do evento é obrigatória." });
-    }
-
-    // 2. Validação da Capacidade (se informada, deve ser um número positivo)
-    if (capacidade !== undefined && (typeof capacidade !== 'number' || capacidade <= 0)) {
-        return res.status(400).json({ erro: "A capacidade deve ser um número positivo." });
-    }
-
-    // Se passou por todas as validações, cria o evento
-    const novoEvento = EventoModel.criar({
-        nome,
-        descricao,
-        data,
-        local,
-        capacidade,
-    });
-    
-    res.status(201).json(novoEvento); // 201 Created
 }
 
 /* Explicação da função store 
@@ -64,15 +60,17 @@ function store(req, res) {
 */
 
 // PUT /eventos/:id - atualizar um evento existente
-function update(req, res) {
-    const id = parseInt(req.params.id);
-    const eventoAtualizado = EventoModel.atualizar(id, req.body);
-
-    if (!eventoAtualizado) {
-        return res.status(404).json({ erro: "Evento não encontrado" });
+function update(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const eventoAtualizado = EventoModel.atualizar(id, req.body);
+        if (!eventoAtualizado) {
+            throw new NotFoundError("Evento");
+        }
+        res.json(eventoAtualizado);
+    } catch (erro) {
+        next(erro);
     }
-
-    res.json(eventoAtualizado);
 }
 
 /* Explicação da função update
@@ -84,15 +82,17 @@ function update(req, res) {
 */
 
 // DELETE /eventos/:id - deletar um evento
-function destroy(req, res) {
-    const id = parseInt(req.params.id);
-    const deletado = EventoModel.deletar(id);
-
-    if (!deletado) {
-        return res.status(404).json({ erro: "Evento não encontrado" });
+function destroy(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const deletado = EventoModel.deletar(id);
+        if (!deletado) {
+            throw new NotFoundError("Evento");
+        }
+        res.status(204).send();
+    } catch (erro) {
+        next(erro);
     }
-
-    res.status(204).send(); // 204 No Content
 }
 
 /* Explicação da função destroy

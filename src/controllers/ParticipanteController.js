@@ -1,66 +1,106 @@
 const ParticipanteModel = require("../models/ParticipanteModel");
+const { NotFoundError, ValidationError } = require("../errors/AppError");
 
-// GET /participantes - listar todos os participantes
-function index(req, res) {
-    const participantes = ParticipanteModel.listarTodos();
-    res.json(participantes);
 
+//O que cada bloco faz estará embaixo!
+
+function index(req, res, next) {
+    try {
+        const participantes = ParticipanteModel.listarTodos();
+        res.json(participantes);
+    } catch (erro) {
+        next(erro);
+    }  
 }
+//index (Listagem Geral) O que faz: Busca todos os registros do banco de dados. 
+// Lógica: Ele chama o método listarTodos() do Model. 
+// Se der certo, retorna a lista completa com status 200 OK. 
+// Se algo falhar (ex: erro de conexão), o catch captura e passa para o próximo middleware de erro.
 
-// GET /participantes/:id - buscar por ID
-function show(req, res) {
-    const id = parseInt(req.params.id);
-    const participante = ParticipanteModel.buscarPorId(id);
 
-    if (!participante) {
-        return res.status(404).json({ erro: "Participante não encontrado" });
+function show(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const participante = ParticipanteModel.buscarPorId(id);
+        
+        if (!participante) {
+            // Lançando erro 404 customizado
+            throw new NotFoundError("Participante não encontrado.");
+        }
+        res.json(participante);
+    } catch (erro) {
+        next(erro);
     }
-    res.json(participante);
 }
+//show (Busca por ID) O que faz: Procura um participante específico usando o ID enviado na URL (/participantes/:id). 
+// Lógica: Converte o ID para número e consulta o Model. Ponto chave: Se o Model retornar vazio, ele "levanta a mão" e lança um NotFoundError. 
+// Isso interrompe a execução e pula direto para o tratamento de erro.
 
-// POST /participantes - criar um novo participante
-function store(req, res) {
-    const { nome, email } = req.body;
-    
-    if (!nome || !email) {
-        return res.status(400).json({ erro: "Nome e email são obrigatórios" });
+function store(req, res, next) {
+    try {
+        const { nome, email } = req.body;
+
+        // Validação de campos obrigatórios
+        if (!nome || !email) {
+            throw new ValidationError("Nome e e-mail são obrigatórios.");
+        }
+
+        // Validação de formato de e-mail
+        if (email && !email.includes("@")) {
+            throw new ValidationError("E-mail inválido.");
+        }
+
+        const novoParticipante = ParticipanteModel.criar({ nome, email });
+        res.status(201).json(novoParticipante);
+    } catch (erro) {
+        next(erro);
     }
-
-    const novoParticipante = ParticipanteModel.criar({ 
-        nome, 
-        email 
-    });
-
-    res.status(201).json(novoParticipante);
 }
+//store (Criação/Cadastro) O que faz: Recebe dados do corpo da requisição (body) para criar um novo registro. 
+// Lógica: * Validação Simples: Verifica se os campos existem. 
+// Validação de Regra: Checa se o e-mail tem o caractere @. Se os dados estiverem errados, lança um ValidationError (400 Bad Request). 
+// Se estiverem OK, salva e retorna o objeto criado com status 201 Created.
 
-// PUT /participantes/:id - atualizar um participante existente
-function update(req, res) {
-    const id = parseInt(req.params.id);
-    const participanteAtualizado = ParticipanteModel.atualizar(id, req.body);
 
-    if (!participanteAtualizado) {
-        return res.status(404).json({ erro: "Participante não encontrado" });
+function update(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const { nome, email } = req.body;
+
+        const atualizado = ParticipanteModel.atualizar(id, { nome, email });
+        
+        if (!atualizado) {
+            throw new NotFoundError("Não foi possível atualizar: Participante não encontrado.");
+        }
+
+        res.json(atualizado);
+    } catch (erro) {
+        next(erro);
     }
-
-    res.json(participanteAtualizado);
 }
+//update (Atualização) O que faz: Altera os dados de um participante que já existe. 
+// Lógica: Recebe o ID pela URL e os novos dados pelo corpo. 
+// Ele tenta atualizar; se o Model não encontrar o ID para atualizar, ele lança um NotFoundError. 
+// Caso contrário, devolve o objeto já atualizado.
 
-// DELETE /participantes/:id - deletar um participante
-function destroy(req, res) {
-    const id = parseInt(req.params.id);
-    const participanteDeletado = ParticipanteModel.deletar(id);
 
-    if (!participanteDeletado) {
-        return res.status(404).json({ erro: "Participante não encontrado" });
+function destroy(req, res, next) {
+    try {
+        const id = parseInt(req.params.id);
+        const excluido = ParticipanteModel.deletar(id);
+
+        if (!excluido) {
+            throw new NotFoundError("Não foi possível excluir: Participante não encontrado.");
+        }
+
+        res.status(204).send(); // 204 No Content para exclusões bem-sucedidas
+    } catch (erro) {
+        next(erro);
     }
-    res.status(204).send();
 }
 
-module.exports = { 
-    index, 
-    show, 
-    store, 
-    update, 
-    destroy 
-};
+module.exports = { index, show, store, update, destroy };
+//O que faz: Remove um participante do sistema. 
+// Lógica: Tenta deletar pelo ID. Se não encontrar o registro, lança erro 404. 
+// Se encontrar e deletar, retorna o status 204 No Content, que avisa ao navegador: 
+// "Deu certo, mas não tenho mais nada para te mostrar (já que o registro sumiu)".
