@@ -5,6 +5,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 const logger = require("./middleware/logger");
 const cors = require("cors");
+const notFound = require("./middleware/notFound");
 
 //DESAFIO
 const InscricaoController = require('./controllers/InscricaoController');
@@ -46,5 +47,6 @@ app.get("/", (req, res) => {
     });
 });
 
+app.use(notFound);
 
 module.exports = app;
