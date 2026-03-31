@@ -1,16 +1,26 @@
 const InscricaoModel = require("../models/InscricaoModel");
 const EventoModel = require("../models/EventoModel");
 const ParticipanteModel = require("../models/ParticipanteModel");
-
+const { isRequired, validar } = require("../helpers/validators");
+const { ValidationError, NotFoundError, BadRequestError } = require("../errors/AppError");
 
 // POST /inscricoes — criar uma inscrição
 function store(req, res, next) {
     try {
         const { eventoId, participanteId } = req.body;
 
+        const erros = validar([
+            isRequired(eventoId, "eventoId"),
+            isRequired(participanteId, "participanteId")
+        ])
+
+        if (erros) {
+            throw new ValidationError(erros.join("; "));
+        }
+
         // Validação básica: se não houver os IDs, lançamos um erro customizado
         if (!eventoId || !participanteId) {
-            throw new BadRequestError("eventoId e participanteId são obrigatórios");
+            throw new ValidationError("eventoId e participanteId são obrigatórios");
         }
 
         const resultado = InscricaoModel.criar(
@@ -20,7 +30,7 @@ function store(req, res, next) {
 
         // Se o Model retornar um erro, lançamos ele para cair no catch
         if (resultado.erro) {
-            throw new BadRequestError(resultado.erro);
+            throw new ValidationError(resultado.erro);
         }
 
         res.status(201).json(resultado);

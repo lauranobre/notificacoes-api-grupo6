@@ -40,6 +40,18 @@ function store(req, res, next) {
     try {
         const { nome, email } = req.body;
 
+        // Validar os dados de entrada
+        const erros = validar([
+            isRequired(nome, "Nome"),
+            minLength(nome, 2, "Nome"),
+            isRequired(email, "Email,"),
+            isEmail(email),
+        ]);
+        if (erros) {
+            throw new ValidationError(erros.join("; "));
+        }
+
+
         // Validação de campos obrigatórios
         if (!nome || !email) {
             throw new ValidationError("Nome e e-mail são obrigatórios.");

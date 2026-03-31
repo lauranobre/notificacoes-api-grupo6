@@ -1,4 +1,10 @@
 const EventoModel = require("../models/EventoModel");
+const {
+    isRequired,
+    isPositiveInteger,
+    minLength,
+    validar,
+} = require("../helpers/validators");
 const { NotFoundError, ValidationError } = require("../errors/AppError");
 
 // GET /eventos - listar todos 
@@ -35,15 +41,31 @@ function show(req, res, next) {
 function store(req, res, next) {
     try {
         const { nome, descricao, data, local, capacidade } = req.body;
+
+        // Validar os dados de entrada
+        const erros = validar([
+            isRequired(nome, "Nome"),
+            isRequired(data, "Data"),
+            minLength(nome, 3, "Nome"),
+            isPositiveInteger(capacidade, "Capacidade"),
+        ]);
+        if (erros) {
+            throw new ValidationError(erros.join("; "));
+        }
+
         if (!nome || !data) {
             throw new ValidationError("Nome e data são obrigatórios");
+        }
+
+        // Dentro da função store de EventoController.js
+        if (capacidade <= 0) {
+            throw new ValidationError("A capacidade do evento deve ser maior que zero.");
         }
         const novoEvento = EventoModel.criar({
             nome,
             descricao,
             data,
             local,
-
             capacidade,
         });
         res.status(201).json(novoEvento);
@@ -63,7 +85,23 @@ function store(req, res, next) {
 function update(req, res, next) {
     try {
         const id = parseInt(req.params.id);
+        const { nome, capacidade, descricao, data, local } = req.body;
+        // const eventoAtualizado = EventoModel.atualizar(id, req.body);
+
+        if (nome && nome.length < 2) {
+            throw new ValidationError("O nome do evento deve ter pelo menos 2 caracteres.");
+        }
+        // No update, os campos não são obrigatórios (atualização parcial)
+        // Mas SE forem enviados, devem ser válidos
+        const erros = validar([
+            minLength(nome, 3, "Nome"),
+            isPositiveInteger(capacidade, "Capacidade"),
+        ]);
+        if (erros) {
+            throw new ValidationError(erros.join("; "));
+        }
         const eventoAtualizado = EventoModel.atualizar(id, req.body);
+
         if (!eventoAtualizado) {
             throw new NotFoundError("Evento");
         }
