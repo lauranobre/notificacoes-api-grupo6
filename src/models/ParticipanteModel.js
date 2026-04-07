@@ -1,11 +1,9 @@
-// Dados iniciais (seed)
 let participantes = [
     { id: 1, nome: "Ana Silva", email: "ana@email.com" },
     { id: 2, nome: "Carlos Souza", email: "carlos@email.com" },
     { id: 3, nome: "Maria Santos", email: "maria@email.com" },
 ];
 
-// Variável para controlar o próximo ID a ser atribuído a um evento
 let proximoId = 4;
 
 function listarTodos() {
@@ -19,22 +17,23 @@ function buscarPorId(id) {
 function criar(dados) {
     const novoParticipante = {
         id: proximoId,
-        nome: dados.nome,
-        email: dados.email,
+        ...dados,
     };
-    proximoId++; // Incrementa o próximo ID para o próximo participante
+
+    proximoId++;
     participantes.push(novoParticipante);
+
     return novoParticipante;
 }
 
 function atualizar(id, dados) {
     const index = participantes.findIndex((participante) => participante.id === id);
-    if (index === -1) return null; // Participante não encontrado
+    if (index === -1) return null;
 
-    participantes [index] = {
-        ...participantes[index], // mantém os dados antigos
-        ...dados, // sobrescreve com os novos
-        id: id, // garante que o ID não mude
+    participantes[index] = {
+        ...participantes[index],
+        ...dados,
+        id: id,
     };
 
     return participantes[index];
@@ -42,10 +41,10 @@ function atualizar(id, dados) {
 
 function deletar(id) {
     const index = participantes.findIndex((participante) => participante.id === id);
-    if (index === -1) return false; // Participante não encontrado
+    if (index === -1) return false;
 
-    participantes.splice(index, 1); // Remove o participante antigo
-    return true; // Atualização bem-sucedida
+    participantes.splice(index, 1);
+    return true;
 }
 
 module.exports = {

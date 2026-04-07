@@ -1,60 +1,71 @@
-// src/services/EventoService.js
 const EventoModel = require("../models/EventoModel");
 const { NotFoundError, ValidationError } = require("../errors/AppError");
 const {
-    isRequired, //campo obrigatório
-    isPositiveInteger, //número inteiro positivo
-    minLength, //tamanho mínimo de string
-    validar, // Junta os erros 
+    isRequired,
+    isPositiveInteger,
+    minLength,
+    validar,
 } = require("../helpers/validators");
+
 function listarTodos() {
     return EventoModel.listarTodos();
 }
+
 function buscarPorId(id) {
     const evento = EventoModel.buscarPorId(id);
     if (!evento) {
-        throw new NotFoundError("Evento");
+        throw new NotFoundError("Evento não encontrado.");
     }
     return evento;
 }
+
 function criar(dados) {
     const { nome, descricao, data, local, capacidade } = dados;
-    // Validação
+    
     const erros = validar([
         isRequired(nome, "Nome"),
         isRequired(data, "Data"),
         minLength(nome, 3, "Nome"),
         isPositiveInteger(capacidade, "Capacidade"),
     ]);
+
     if (erros) {
         throw new ValidationError(erros.join("; "));
     }
+
     return EventoModel.criar({ nome, descricao, data, local, capacidade });
 }
-function atualizar(id, dados) {
 
+function atualizar(id, dados) {
     const { nome, capacidade } = dados;
-    // Validações (campos opcionais no update)
+
+    // É boa prática verificar se existe ANTES de tentar atualizar
+    const eventoExistente = EventoModel.buscarPorId(id);
+    if (!eventoExistente) {
+        throw new NotFoundError("Evento não encontrado.");
+    }
+
+    // Usando ternário para não quebrar a API se o campo não for enviado
     const erros = validar([
-        minLength(nome, 3, "Nome"),
-        isPositiveInteger(capacidade, "Capacidade"),
+        nome ? minLength(nome, 3, "Nome") : null,
+        capacidade ? isPositiveInteger(capacidade, "Capacidade") : null,
     ]);
+
     if (erros) {
         throw new ValidationError(erros.join("; "));
     }
-    const eventoAtualizado = EventoModel.atualizar(id, dados);
-    if (!eventoAtualizado) {
-        throw new NotFoundError("Evento");
-    }
-    return eventoAtualizado;
+
+    return EventoModel.atualizar(id, dados);
 }
+
 function deletar(id) {
     const deletado = EventoModel.deletar(id);
     if (!deletado) {
-        throw new NotFoundError("Evento");
+        throw new NotFoundError("Evento não encontrado.");
     }
     return true;
 }
+
 module.exports = {
     listarTodos,
     buscarPorId,
@@ -62,7 +73,3 @@ module.exports = {
     atualizar,
     deletar,
 };
-
-/* Explicação geral do EventoService
-- O service implementa a lógica de negócios relacionada aos eventos.
-- Ele utiliza o model para acessar os dados e aplicar as regras de validação.*/

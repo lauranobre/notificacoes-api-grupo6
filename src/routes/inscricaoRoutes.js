@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router();
 const InscricaoController = require("../controllers/InscricaoController");
 
-// router.post("/", InscricaoController.store);
-// router.get("/", InscricaoController.index);
-// router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
-// router.patch("/:id/cancelar", InscricaoController.cancelar);
 
 /**
  * @swagger
@@ -74,6 +70,10 @@ router.get("/", InscricaoController.index);
  *     responses:
  *       200:
  *         description: Inscrição encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Inscricao'
  *       404:
  *         description: Inscrição não encontrada
  */

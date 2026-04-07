@@ -1,6 +1,7 @@
+// src/controllers/InscricaoController.js
 const InscricaoService = require("../services/InscricaoService");
+const parseId = require("../helpers/parseId"); //HELPER -> Aula 11
 
-// GET /inscricoes — listar todas
 function index(req, res, next) {
     try {
         const inscricoes = InscricaoService.listarTodas();
@@ -10,7 +11,6 @@ function index(req, res, next) {
     }
 }
 
-// POST /inscricoes — criar uma inscrição
 function store(req, res, next) {
     try {
         const novaInscricao = InscricaoService.criar(req.body);
@@ -20,10 +20,9 @@ function store(req, res, next) {
     }
 }
 
-// GET /inscricoes/evento/:eventoId
 function listarPorEvento(req, res, next) {
     try {
-        const eventoId = parseInt(req.params.eventoId);
+        const eventoId = parseId(req.params.eventoId);
         const inscricoes = InscricaoService.listarPorEvento(eventoId);
         res.json(inscricoes);
     } catch (erro) {
@@ -31,10 +30,9 @@ function listarPorEvento(req, res, next) {
     }
 }
 
-// PATCH /inscricoes/:id/cancelar
 function cancelar(req, res, next) {
     try {
-        const id = parseInt(req.params.id);
+        const id = parseId(req.params.id);
         const resultado = InscricaoService.cancelar(id);
         res.json(resultado);
     } catch (erro) {
@@ -42,12 +40,10 @@ function cancelar(req, res, next) {
     }
 }
 
-// GET /inscricoes/:id/detalhes (DESAFIO: obterDetalhes)
 function obterDetalhes(req, res, next) {
     try {
-        const id = parseInt(req.params.id);
+        const id = parseId(req.params.id);
         const detalhes = InscricaoService.obterDetalhes(id); 
-        
         res.status(200).json(detalhes);
     } catch (erro) {
         next(erro);

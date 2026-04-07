@@ -1,11 +1,13 @@
-require("dotenv").config(); // Carrega as variáveis do .env
+
+//código limpo e refatorado
+require("dotenv").config();
 
 const app = require("./app");
 
-const PORT = process.env.PORT || 3000;
+const { PORT = 3000, NODE_ENV = "development" } = process.env;
 
 app.listen(PORT, () => {
-console.log(`Servidor rodando em http://localhost:${PORT}`);
-console.log(`Ambiente: ${process.env.NODE_ENV || "development"}`);
-console.log(`Documentação: http://localhost:${PORT}/api-docs`);
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Ambiente: ${NODE_ENV}`);
+  console.log(`Documentação: http://localhost:${PORT}/api-docs`);
 });

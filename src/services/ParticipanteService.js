@@ -8,22 +8,21 @@ const {
   validar,
 } = require("../helpers/validators");
 
-function listarTodos() {
-  return ParticipanteModel.listarTodos();
-}
+const ParticipanteService = {
+  listarTodos() {
+    return ParticipanteModel.listarTodos();
+  },
 
-function buscarPorId(id) {
-  const participante = ParticipanteModel.buscarPorId(id);
-
+  buscarPorId(id) {
+    const participante = ParticipanteModel.buscarPorId(id);
   if (!participante) {
     throw new NotFoundError("Participante não encontrado");
   }
+    return participante;
+  },
 
-  return participante;
-}
-
-function criar(dados) {
-  const { nome, email } = dados;
+  criar(dados) {
+    const { nome, email } = dados;
 
   const erros = validar([
     isRequired(nome, "nome"),
@@ -32,15 +31,16 @@ function criar(dados) {
     isEmail(email, "email"),
   ]);
 
-  if (erros) throw new ValidationError(erros.join("; "));
+  if (erros) {
+    throw new ValidationError(erros.join("; "));
+  }
 
   return ParticipanteModel.criar({ nome, email });
-}
+},
 
-function atualizar(id, dados) {
+atualizar(id, dados) {
   const { nome, email } = dados;
 
-  // Verifica se existe
   const participanteExistente = ParticipanteModel.buscarPorId(id);
   if (!participanteExistente) {
     throw new NotFoundError("Participante não encontrado");
@@ -57,18 +57,15 @@ function atualizar(id, dados) {
   const atualizado = ParticipanteModel.atualizar(id, { nome, email });
 
   return atualizado;
-}
+},
 
-function deletar(id) {
-  const participante = ParticipanteModel.buscarPorId(id);
+deletar(id) {
+        const excluido = ParticipanteModel.deletar(id);
+        if (!excluido) {
+            throw new NotFoundError("Não foi possível excluir: Participante não encontrado.");
+        }
+        return excluido;
+    }
+};
 
-  if (!participante) {
-    throw new NotFoundError("Participante não encontrado");
-  }
-
-  ParticipanteModel.deletar(id);
-
-  return { mensagem: "Participante deletado com sucesso" };
-}
-
-module.exports = { listarTodos, buscarPorId, criar, atualizar, deletar };
+module.exports = ParticipanteService;

@@ -1,11 +1,15 @@
+// 1. Models
 const InscricaoModel = require("../models/InscricaoModel");
 const EventoModel = require("../models/EventoModel");
 const ParticipanteModel = require("../models/ParticipanteModel");
+
+// 2. Erros e Validadores
 const { NotFoundError, ValidationError } = require("../errors/AppError");
 const { isRequired, validar } = require("../helpers/validators");
 
 function criar(dados) {
     const { eventoId, participanteId } = dados;
+    
     const erros = validar([
         isRequired(eventoId, "eventoId"),
         isRequired(participanteId, "participanteId"),
@@ -14,45 +18,71 @@ function criar(dados) {
     if (erros) {
         throw new ValidationError(erros.join("; "));
     }
-    const evento = EventoModel.buscarPorId(parseInt(eventoId));
+
+    // parseInt apenas uma vez uma vez para manter o código limpo
+    const idEvento = parseInt(eventoId);
+    const idParticipante = parseInt(participanteId);
+
+    const evento = EventoModel.buscarPorId(idEvento);
     if (!evento) throw new NotFoundError("Evento");
-    const participante = ParticipanteModel.buscarPorId(parseInt(participanteId));
+    
+    const participante = ParticipanteModel.buscarPorId(idParticipante);
     if (!participante) throw new NotFoundError("Participante");
 
-    // Busca todas as inscrições desse evento
-    const inscricoesDoEvento = InscricaoModel.listarPorEvento(parseInt(eventoId));
-    // Verifica se já existe alguma com o ID desse participante
-    const jaInscrito = inscricoesDoEvento.some(inscricao => inscricao.participanteId === parseInt(participanteId));
+    const inscricoesDoEvento = InscricaoModel.listarPorEvento(idEvento);
+    const jaInscrito = inscricoesDoEvento.some(inscricao => inscricao.participanteId === idParticipante);
     
     if (jaInscrito) {
-        // Dispara o erro 400 exigido pelo teste
         throw new ValidationError("Participante já inscrito neste evento");
     }
-    return InscricaoModel.criar(parseInt(eventoId), parseInt(participanteId));
+    
+    return InscricaoModel.criar(idEvento, idParticipante);
 }
 
 function listarTodas() {
     return InscricaoModel.listarTodas();
 }
+
 function buscarPorId(id) {
     const inscricao = InscricaoModel.buscarPorId(id);
     if (!inscricao) {
-        throw new NotFoundError("Inscricao");
+        throw new NotFoundError("Inscrição");
     }
     return inscricao;
 }
 
 function listarPorEvento(eventoId) {
-    const inscricoes = InscricaoModel.listarPorEvento(parseInt(eventoId));
-    return inscricoes;
+    return InscricaoModel.listarPorEvento(parseInt(eventoId));
 }
 
 function cancelar(id) {
     const cancelado = InscricaoModel.cancelar(id);
     if (!cancelado) {
-        throw new NotFoundError("Inscricao");
+        throw new NotFoundError("Inscrição");
     }
     return true;
+}
+
+// Função trazida do Controller para o Service, respeitando a arquitetura
+function obterDetalhes(id) {
+    const inscricao = buscarPorId(id); 
+    const evento = EventoModel.buscarPorId(inscricao.eventoId);
+    const participante = ParticipanteModel.buscarPorId(inscricao.participanteId);
+
+    return {
+        id: inscricao.id,
+        status: inscricao.status,
+        dataInscricao: inscricao.dataInscricao,
+        evento: evento ? { 
+            id: evento.id, 
+            nome: evento.nome 
+        } : null,
+        participante: participante ? { 
+            id: participante.id, 
+            nome: participante.nome, 
+            email: participante.email 
+        } : null
+    };
 }
 
 module.exports = {
@@ -60,5 +90,6 @@ module.exports = {
     listarTodas,
     buscarPorId,
     listarPorEvento,
-    cancelar
+    cancelar,
+    obterDetalhes
 };

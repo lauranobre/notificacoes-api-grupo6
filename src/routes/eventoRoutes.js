@@ -108,33 +108,32 @@ router.get("/:id", EventoController.show);
 *           application/json:
 *             schema:
 *               type: object
-*       required:
-*         - nome
-*         - data
-*       properties:
-*         nome:
-*           type: string
-*         descricao:
-*           type: string
-*         data:
-*           type: string
-*         local:
-*           type: string
-*         capacidade:
-*           type: integer
-*         example:
-*           nome: "Palestra sobre APIs"
-*           descricao: "Como construir APIs profissionais"
-*           data: "2025-10-10"
-*           local: "SENAI - Sala 5"
-*           capacidade: 50
+*               required:
+*                 - nome
+*                 - data
+*               properties:
+*                 nome:
+*                   type: string
+*                 descricao:
+*                   type: string
+*                 data:
+*                   type: string
+*                 local:
+*                   type: string
+*                 capacidade:
+*                   type: integer
+*               example:
+*                 nome: "Palestra sobre APIs"
+*                 descricao: "Como construir APIs profissionais"
+*                 data: "2025-10-10"
+*                 local: "SENAI - Sala 5"
+*                 capacidade: 50
 *       responses:
 *           201:
 *               description: Evento criado com sucesso
 *           400:
 *               description: Dados inválidos
 */
-router.post("/", EventoController.store);
 
 /**
 * @swagger
@@ -154,17 +153,20 @@ router.post("/", EventoController.store);
 *           application/json:
 *             schema:
 *               type: object
-*       properties:
-*         nome:
-*           type: string
-*         descricao:
-*           type: string
-*         data:
-*           type: string
-*         local:
-*           type: string
-*         capacidade:
-*           type: integer
+*               required:
+*                 - nome
+*                 - data
+*               properties:
+*                 nome:
+*                   type: string
+*                 descricao:
+*                   type: string
+*                 data:
+*                   type: string
+*                 local:
+*                   type: string
+*                 capacidade:
+*                   type: integer
 *       responses:
 *           200:
 *               description: Evento atualizado

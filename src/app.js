@@ -1,4 +1,5 @@
-//Arquivo organizado
+
+//Arquivo refatorado e limpo:
 // src/app.js
 
 const express = require("express");
@@ -15,8 +16,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const responseTime = require("./middleware/responseTime");
+const responseTime = require("./middlewares/responseTime");
 app.use(responseTime);
+
+// (Opcional - recomendo)
+const logger = require("./middlewares/logger");
+app.use(logger);
 
 // ============================================
 // DOCUMENTAÇÃO
@@ -36,7 +41,7 @@ app.use("/eventos", eventoRoutes);
 app.use("/participantes", participanteRoutes);
 app.use("/inscricoes", inscricaoRoutes);
 
-// Rota raiz (informativa)
+// Rota raiz
 app.get("/", (req, res) => {
   res.json({
     mensagem: "API de Notificações",
@@ -51,17 +56,13 @@ app.get("/", (req, res) => {
 });
 
 // ============================================
-// MIDDLEWARES DE ERRO (sempre por último!)
+// MIDDLEWARES DE ERRO
 // ============================================
 
-const notFound = require("./middleware/notFound");
-const errorHandler = require("./middleware/errorHandler");
+const notFound = require("./middlewares/notFound");
+const errorHandler = require("./middlewares/errorHandler");
 
 app.use(notFound);
 app.use(errorHandler);
-
-// ============================================
-// EXPORTAÇÃO
-// ============================================
 
 module.exports = app;

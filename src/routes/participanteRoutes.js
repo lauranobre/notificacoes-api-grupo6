@@ -2,64 +2,47 @@ const express = require("express");
 const router = express.Router();
 const ParticipanteController = require("../controllers/ParticipanteController");
 
-// router.get("/", ParticipanteController.index); // GET /participantes
-
-// router.get("/:id", ParticipanteController.show); // GET /participantes/:id
-
-// router.post("/", ParticipanteController.store); // POST /participantes
-
-// router.put("/:id", ParticipanteController.update); // PUT /participantes/:id
-
-// router.delete("/:id", ParticipanteController.destroy); // DELETE /participantes/:id
-
-/* Explicação: 
-- O index exibe a lista de participantes.
-- O show exibe um participante específico com base no ID.
-- O store cria um novo participante.
-- O update atualiza um participante existente com base no ID.
-- O destroy exclui um participante com base no ID.
-*/
 
 /**
 * @swagger
 * components:
 *   schemas:
-*       Participante:
-*           type: object
-*           required:
-*             - nome
-*             - email
-*           properties:
-*             id:
-*               type: integer
-*               description: ID gerado automaticamente
-*             nome:
-*               type: string
-*               description: Nome do participante
-*             email:
-*               type: string
-*               description: E-mail do participante
-*             example:
-*               id: 1
-*               nome: Ana Silva
-*               email: ana@email.com
+*     Participante:
+*       type: object
+*       required:
+*         - nome
+*         - email
+*       properties:
+*         id:
+*           type: integer
+*           description: ID gerado automaticamente
+*         nome:
+*           type: string
+*           description: Nome do participante
+*         email:
+*           type: string
+*           description: E-mail do participante
+*       example:
+*         id: 1
+*         nome: Ana Silva
+*         email: ana@email.com
 */
 
 /**
 * @swagger
 * /participantes:
 *   get:
-*       summary: Listar todos os participantes
-*       tags: [Participantes]
-*       responses:
-*           200:
-*               description: Lista de participantes
-*               content:
-*                   application/json:
-*                       schema:
-*                           type: array
-*                           items:
-*                               $ref: '#/components/schemas/Participante'
+*     summary: Listar todos os participantes
+*     tags: [Participantes]
+*     responses:
+*       200:
+*         description: Lista de participantes
+*         content:
+*           application/json:
+*             schema:
+*               type: array
+*               items:
+*                 $ref: '#/components/schemas/Participante'
 */
 router.get("/", ParticipanteController.index);
 
@@ -67,24 +50,24 @@ router.get("/", ParticipanteController.index);
 * @swagger
 * /participantes/{id}:
 *   get:
-*       summary: Buscar participante por ID
-*       tags: [Participantes]
-*       parameters:
-*           - in: path
-*             name: id
-*             required: true
+*     summary: Buscar participante por ID
+*     tags: [Participantes]
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: integer
+*         description: ID do participante
+*     responses:
+*       200:
+*         description: Participante encontrado
+*         content:
+*           application/json:
 *             schema:
-*               type: integer
-*             description: ID do participante
-*       responses:
-*           200:
-*               description: Participante encontrado
-*               content:
-*                   application/json:
-*                      schema:
-*                       $ref: '#/components/schemas/Participante'
-*           404:
-*               description: Participante não encontrado
+*               $ref: '#/components/schemas/Participante'
+*       404:
+*         description: Participante não encontrado
 */
 router.get("/:id", ParticipanteController.show);
 
@@ -92,84 +75,85 @@ router.get("/:id", ParticipanteController.show);
 * @swagger
 * /participantes:
 *   post:
-*       summary: Criar um novo participante
-*       tags: [Participantes]
-*       requestBody:
-*         required: true
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *       required:
- *         - nome
- *         - email
- *       properties:
- *         nome:
- *           type: string
- *         email:
- *           type: string
- *         example:
- *           nome: "Ana Silva"
- *           email: "ana@email.com"
- *       responses:
- *           201:
- *               description: Participante criado com sucesso
- *           400:
- *               description: Dados inválidos
- */
+*     summary: Criar um novo participante
+*     tags: [Participantes]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             required:
+*               - nome
+*               - email
+*             properties:
+*               nome:
+*                 type: string
+*               email:
+*                 type: string
+*             example:
+*               nome: "Ana Silva"
+*               email: "ana@email.com"
+*     responses:
+*       201:
+*         description: Participante criado com sucesso
+*       400:
+*         description: Dados inválidos
+*/
 router.post("/", ParticipanteController.store);
 
 /**
- * @swagger
- * /participantes/{id}:
- *   put:
- *       summary: Atualizar um participante
- *       tags: [Participantes]
- *       parameters:
- *           - in: path
- *             name: id
- *             required: true
- *             schema:
- *               type: integer
- *       requestBody:
- *         required: true
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *       properties:
- *         nome:
- *           type: string
- *         email:
- *           type: string
- *         example:
- *           nome: "Ana Silva"
- *           email: "ana@email.com"
- *       responses:
- *           200:
- *               description: Participante atualizado
- *           404:
- *               description: Participante não encontrado
- */
+* @swagger
+* /participantes/{id}:
+*   put:
+*     summary: Atualizar um participante
+*     tags: [Participantes]
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: integer
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             properties:
+*               nome:
+*                 type: string
+*               email:
+*                 type: string
+*             example:
+*               nome: "Ana Silva"
+*               email: "ana@email.com"
+*     responses:
+*       200:
+*         description: Participante atualizado
+*       404:
+*         description: Participante não encontrado
+*/
 router.put("/:id", ParticipanteController.update);
+
 /**
- * @swagger
- * /participantes/{id}:
- *   delete:
- *       summary: Deletar um participante
- *       tags: [Participantes]
- *       parameters:
- *           - in: path
- *             name: id
- *             required: true
- *             schema:
- *               type: integer
- *       responses:
- *           204:
- *               description: Participante deletado
- *           404:
- *               description: Participante não encontrado
- */
+* @swagger
+* /participantes/{id}:
+*   delete:
+*     summary: Deletar um participante
+*     tags: [Participantes]
+*     parameters:
+*       - in: path
+*         name: id
+*         required: true
+*         schema:
+*           type: integer
+*     responses:
+*       204:
+*         description: Participante deletado
+*       404:
+*         description: Participante não encontrado
+*/
 router.delete("/:id", ParticipanteController.destroy);
 
 module.exports = router;
