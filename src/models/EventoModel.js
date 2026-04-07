@@ -40,7 +40,7 @@ function criar(dados) {
         descricao: dados.descricao,
         data: dados.data,
         local: dados.local,
-        capacidades: dados.capacidade,
+        capacidade: dados.capacidade,
     };
     proximoId++; // Incrementa o próximo ID para o próximo evento
     eventos.push(novoEvento);
