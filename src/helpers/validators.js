@@ -1,4 +1,3 @@
-
 // src/helpers/validators.js
 
 function isRequired(valor, campo) {
@@ -16,7 +15,7 @@ function isRequired(valor, campo) {
 function isEmail(valor) {
   if (!valor) return null;
 
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //alguma coisa + @ + alguma coisa + ponto + alguma coisa
 
   if (!regex.test(valor)) {
     return "E-mail inválido";
