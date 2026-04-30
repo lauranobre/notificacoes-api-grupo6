@@ -134,7 +134,7 @@ router.post("/", ParticipanteController.store);
 *       404:
 *         description: Participante não encontrado
 */
-// router.put("/:id", ParticipanteController.update);
+router.put("/:id", ParticipanteController.update);
 
 /**
 * @swagger
@@ -154,6 +154,6 @@ router.post("/", ParticipanteController.store);
 *       404:
 *         description: Participante não encontrado
 */
-// router.delete("/:id", ParticipanteController.destroy);
+router.delete("/:id", ParticipanteController.destroy);
 
 module.exports = router;

@@ -1,95 +1,68 @@
-// 1. Models
-const InscricaoModel = require("../models/InscricaoModel");
-const EventoModel = require("../models/EventoModel");
-const ParticipanteModel = require("../models/ParticipanteModel");
+const { Inscricao, Evento, Participante } = require('../models');
+const { NotFoundError, ValidationError } = require('../errors/AppError');
 
-// 2. Erros e Validadores
-const { NotFoundError, ValidationError } = require("../errors/AppError");
-const { isRequired, validar } = require("../helpers/validators");
+async function criar(dados) {
+  const { eventoId, participanteId } = dados;
 
-function criar(dados) {
-    const { eventoId, participanteId } = dados;
-    
-    const erros = validar([
-        isRequired(eventoId, "eventoId"),
-        isRequired(participanteId, "participanteId"),
-    ]);
+  // 1. Verificar se o evento existe (Substitui o EventoModel manual)
+  const evento = await Evento.findByPk(eventoId);
+  if (!evento) throw new NotFoundError('Evento');
 
-    if (erros) {
-        throw new ValidationError(erros.join("; "));
-    }
+  // 2. Verificar se o participante existe
+  const participante = await Participante.findByPk(participanteId);
+  if (!participante) throw new NotFoundError('Participante');
 
-    // parseInt apenas uma vez uma vez para manter o código limpo
-    const idEvento = parseInt(eventoId);
-    const idParticipante = parseInt(participanteId);
+  // 3. Verificar duplicata (Substitui o .some() manual)
+  const jaInscrito = await Inscricao.findOne({
+    where: { evento_id: eventoId, participante_id: participanteId }
+  });
 
-    const evento = EventoModel.buscarPorId(idEvento);
-    if (!evento) throw new NotFoundError("Evento");
-    
-    const participante = ParticipanteModel.buscarPorId(idParticipante);
-    if (!participante) throw new NotFoundError("Participante");
+  if (jaInscrito) throw new ValidationError('Participante já inscrito neste evento');
 
-    const inscricoesDoEvento = InscricaoModel.listarPorEvento(idEvento);
-    const jaInscrito = inscricoesDoEvento.some(inscricao => inscricao.participanteId === idParticipante);
-    
-    if (jaInscrito) {
-        throw new ValidationError("Participante já inscrito neste evento");
-    }
-    
-    return InscricaoModel.criar(idEvento, idParticipante);
+  // 4. Criar a inscrição (O Sequelize já cuida dos campos de data automaticamente)
+  const novaInscricao = await Inscricao.create({
+    evento_id: eventoId,
+    participante_id: participanteId,
+  });
+
+  return novaInscricao;
 }
 
-function listarTodas() {
-    return InscricaoModel.listarTodas();
+async function listarTodas() {
+  // O 'include' substitui toda a lógica manual de buscar evento/participante um por um
+  return await Inscricao.findAll({
+    include: [
+      { model: Evento, as: 'evento', attributes: ['id', 'nome', 'data'] },
+      { model: Participante, as: 'participante', attributes: ['id', 'nome', 'email'] },
+    ],
+    order: [['created_at', 'DESC']],
+  });
 }
 
-function buscarPorId(id) {
-    const inscricao = InscricaoModel.buscarPorId(id);
-    if (!inscricao) {
-        throw new NotFoundError("Inscrição");
-    }
-    return inscricao;
+async function listarPorEvento(eventoId) {
+  // Filtra por evento_id e inclui os dados do participante
+  return await Inscricao.findAll({
+    where: { evento_id: eventoId },
+    include: [
+      { model: Participante, as: 'participante', attributes: ['id', 'nome', 'email'] }
+    ]
+  });
 }
 
-function listarPorEvento(eventoId) {
-    return InscricaoModel.listarPorEvento(parseInt(eventoId));
+async function cancelar(id) {
+  const inscricao = await Inscricao.findByPk(id);
+
+  if (!inscricao) {
+    throw new NotFoundError('Inscricao');
+  }
+
+  // Atualização lógica conforme pedido na aula
+  await inscricao.update({ status: 'cancelada' });
+
+  return inscricao;
 }
 
-function cancelar(id) {
-    const cancelado = InscricaoModel.cancelar(id);
-    if (!cancelado) {
-        throw new NotFoundError("Inscrição");
-    }
-    return true;
-}
+// Obs: A função obterDetalhes não é mais necessária separadamente, 
+// pois o listarTodas() e listarPorEvento() já trazem os dados completos via include.
 
-// Função trazida do Controller para o Service, respeitando a arquitetura
-function obterDetalhes(id) {
-    const inscricao = buscarPorId(id); 
-    const evento = EventoModel.buscarPorId(inscricao.eventoId);
-    const participante = ParticipanteModel.buscarPorId(inscricao.participanteId);
-
-    return {
-        id: inscricao.id,
-        status: inscricao.status,
-        dataInscricao: inscricao.dataInscricao,
-        evento: evento ? { 
-            id: evento.id, 
-            nome: evento.nome 
-        } : null,
-        participante: participante ? { 
-            id: participante.id, 
-            nome: participante.nome, 
-            email: participante.email 
-        } : null
-    };
-}
-
-module.exports = {
-    criar,
-    listarTodas,
-    buscarPorId,
-    listarPorEvento,
-    cancelar,
-    obterDetalhes
-};
+module.exports = { criar, listarTodas, listarPorEvento, cancelar };

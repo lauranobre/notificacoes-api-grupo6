@@ -1,60 +1,64 @@
-// src/controllers/InscricaoController.js
-const InscricaoService = require("../services/InscricaoService");
-const parseId = require("../helpers/parseId"); //HELPER -> Aula 11
+/**
+ * src/controllers/InscricaoController.js
+ */
+const InscricaoService = require('../services/InscricaoService');
 
-function index(req, res, next) {
+// Criar uma nova inscrição
+async function store(req, res, next) {
     try {
-        const inscricoes = InscricaoService.listarTodas();
-        res.json(inscricoes);
-    } catch (erro) {
-        next(erro);
-    }
-}
-
-function store(req, res, next) {
-    try {
-        const novaInscricao = InscricaoService.criar(req.body);
+        const novaInscricao = await InscricaoService.criar(req.body);
         res.status(201).json(novaInscricao);
     } catch (erro) {
         next(erro);
     }
 }
 
-function listarPorEvento(req, res, next) {
+// Listar todas as inscrições
+async function index(req, res, next) {
     try {
-        const eventoId = parseId(req.params.eventoId);
-        const inscricoes = InscricaoService.listarPorEvento(eventoId);
+        const inscricoes = await InscricaoService.listarTodas();
         res.json(inscricoes);
     } catch (erro) {
         next(erro);
     }
 }
 
-function cancelar(req, res, next) {
+// Listar inscrições filtradas por um evento específico
+async function listarPorEvento(req, res, next) {
     try {
-        const id = parseId(req.params.id);
-        const resultado = InscricaoService.cancelar(id);
-        res.json(resultado);
+        const { eventoId } = req.params;
+        const inscricoes = await InscricaoService.listarPorEvento(eventoId);
+        res.json(inscricoes);
     } catch (erro) {
         next(erro);
     }
 }
 
-function obterDetalhes(req, res, next) {
+// Cancelar uma inscrição (mudar status para 'cancelada')
+async function cancelar(req, res, next) {
     try {
-        const id = parseId(req.params.id);
-        const detalhes = InscricaoService.obterDetalhes(id); 
-        res.status(200).json(detalhes);
+        const { id } = req.params;
+        const inscricaoCancelada = await InscricaoService.cancelar(id);
+        res.json(inscricaoCancelada);
     } catch (erro) {
         next(erro);
     }
 }
 
-module.exports = { 
-    index, 
-    store, 
-    listarPorEvento, 
-    cancelar, 
-    obterDetalhes 
+async function obterDetalhes(req, res, next) {
+    try {
+        const { id } = req.params;
+        const inscricao = await InscricaoService.buscarPorId(id);
+        res.json(inscricao);
+    } catch (erro) {
+        next(erro);
+    }
+}
+
+module.exports = {
+    store,
+    index,
+    listarPorEvento,
+    cancelar,
+    obterDetalhes
 };
-
