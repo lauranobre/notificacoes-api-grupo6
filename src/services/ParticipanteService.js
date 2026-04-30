@@ -1,71 +1,44 @@
 // src/services/ParticipanteService.js
-const ParticipanteModel = require("../models/ParticipanteModel");
-const { NotFoundError, ValidationError } = require("../errors/AppError");
-const {
-  isRequired,
-  isEmail,
-  minLength,
-  validar,
-} = require("../helpers/validators");
+const { Participante } = require('../models');
+const { NotFoundError, ValidationError } = require('../errors/AppError'); // Importei ValidationError também
 
-const ParticipanteService = {
-  listarTodos() {
-    return ParticipanteModel.listarTodos();
-  },
+async function listarTodos() {
+  // Conforme o roteiro: findAll com ordenação por nome
+  return await Participante.findAll({
+    order: [['nome', 'ASC']],
+  });
+}
 
-  buscarPorId(id) {
-    const participante = ParticipanteModel.buscarPorId(id);
+async function buscarPorId(id) {
+  // Conforme o roteiro: findByPk
+  const participante = await Participante.findByPk(id);
+
+  // Se não encontrar, lança o erro que o professor pediu
   if (!participante) {
-    throw new NotFoundError("Participante não encontrado");
-  }
-    return participante;
-  },
-
-  criar(dados) {
-    const { nome, email } = dados;
-
-  const erros = validar([
-    isRequired(nome, "nome"),
-    minLength(nome, 3, "nome"),
-    isRequired(email, "email"),
-    isEmail(email, "email"),
-  ]);
-
-  if (erros) {
-    throw new ValidationError(erros.join("; "));
+    throw new NotFoundError('Participante'); // Passando apenas o nome do recurso como no exemplo dele
   }
 
-  return ParticipanteModel.criar({ nome, email });
-},
+  return participante;
+}
 
-atualizar(id, dados) {
-  const { nome, email } = dados;
-
-  const participanteExistente = ParticipanteModel.buscarPorId(id);
-  if (!participanteExistente) {
-    throw new NotFoundError("Participante não encontrado");
-  }
-
-  // Validação (campos opcionais)
-  const erros = validar([
-    nome ? minLength(nome, 3, "nome") : null,
-    email ? isEmail(email, "email") : null,
-  ]);
-
-  if (erros) throw new ValidationError(erros.join("; "));
-
-  const atualizado = ParticipanteModel.atualizar(id, { nome, email });
-
-  return atualizado;
-},
-
-deletar(id) {
-        const excluido = ParticipanteModel.deletar(id);
-        if (!excluido) {
-            throw new NotFoundError("Não foi possível excluir: Participante não encontrado.");
-        }
-        return excluido;
+async function criar(dados) {
+  // Conforme o roteiro: try/catch para erros do Sequelize
+  try {
+    const novoParticipante = await Participante.create(dados);
+    return novoParticipante;
+  } catch (erro) {
+    // Seguindo exatamente o padrão que o professor fez no EventoService:
+    if (erro.name === 'SequelizeValidationError') {
+      const mensagens = erro.errors.map(e => e.message).join('; ');
+      throw new ValidationError(mensagens);
     }
-};
+    
+    // Se for outro erro (como o UniqueConstraint), o errorHandler da Parte 4 resolve
+    throw erro; 
+  }
+}
 
-module.exports = ParticipanteService;
+async function atualizar(id, dados) { /* TODO: próxima aula */ }
+async function deletar(id) { /* TODO: próxima aula */ }
+
+module.exports = { listarTodos, buscarPorId, criar, atualizar, deletar };
