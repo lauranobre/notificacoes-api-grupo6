@@ -1,6 +1,6 @@
+//Aula 17, parte 3 exportações
+const exportRoutes = require('./routes/exportRoutes');
 
-//Arquivo refatorado e limpo:
-// src/app.js
 
 const express = require("express");
 const cors = require("cors");
@@ -40,6 +40,8 @@ const inscricaoRoutes = require("./routes/inscricaoRoutes");
 app.use("/eventos", eventoRoutes);
 app.use("/participantes", participanteRoutes);
 app.use("/inscricoes", inscricaoRoutes);
+
+app.use('/exportar', exportRoutes);
 
 // Rota raiz
 app.get("/", (req, res) => {
