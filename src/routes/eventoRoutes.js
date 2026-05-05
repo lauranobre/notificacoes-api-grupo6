@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const EventoController = require("../controllers/EventoController");
+const upload = require("../config/upload");
 
 /**
  * @swagger
@@ -69,6 +70,30 @@ const EventoController = require("../controllers/EventoController");
 router.get("/", EventoController.index);
 
 router.get("/futuros", EventoController.listarFuturos);
+
+router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
+  try {
+    const { Evento } = require('../models');
+    const evento = await Evento.findByPk(req.params.id);
+
+    if (!evento) {
+      return res.status(404).json({ erro: 'Evento não encontrado' });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ erro: 'Nenhum arquivo enviado' });
+    }
+
+    await evento.update({ banner: `/uploads/${req.file.filename}` });
+
+    res.json({
+      mensagem: 'Banner atualizado com sucesso',
+      banner: `/uploads/${req.file.filename}`,
+    });
+  } catch (erro) {
+    next(erro);
+  }
+});
 
 /**
  * @swagger

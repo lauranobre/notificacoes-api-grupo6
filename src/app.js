@@ -13,6 +13,13 @@ const app = express();
 // MIDDLEWARES GLOBAIS
 // ============================================
 
+
+//Aula 18, PARTE 1
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+// ============================================
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -64,6 +71,7 @@ app.get("/", (req, res) => {
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
+app.use('/uploads', express.static('uploads'));
 app.use(notFound);
 app.use(errorHandler);
 
