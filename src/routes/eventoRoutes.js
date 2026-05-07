@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const EventoController = require("../controllers/EventoController");
 const upload = require("../config/upload");
+const cacheMiddleware = require("../middlewares/cacheMiddleware");
 
 /**
  * @swagger
@@ -67,9 +68,9 @@ const upload = require("../config/upload");
  *                 totalPaginas:
  *                   type: integer
  */
-router.get("/", EventoController.index);
+router.get("/", cacheMiddleware(30), EventoController.index);
 
-router.get("/futuros", EventoController.listarFuturos);
+router.get("/futuros", cacheMiddleware(30), EventoController.listarFuturos);
 
 router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
   try {
@@ -114,7 +115,7 @@ router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
  *       404:
  *         description: Evento não encontrado
  */
-router.get("/:id", EventoController.show);
+router.get("/:id", cacheMiddleware(60), EventoController.show);
 
 /**
  * @swagger

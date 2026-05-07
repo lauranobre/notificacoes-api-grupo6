@@ -1,7 +1,6 @@
 //Aula 17, parte 3 exportações
 const exportRoutes = require('./routes/exportRoutes');
 
-
 const express = require("express");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");

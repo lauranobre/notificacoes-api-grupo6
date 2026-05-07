@@ -18,7 +18,7 @@ Laura: criei os arquivos definition-of-done.md e standup-log.md
 Luiza: atualizei o Kanban
 
 2. O que vou fazer hoje?
-Laura/Luiza: documentar a arquitetura em docs/arquiteta.md
+Laura/Luiza: documentar a arquitetura em docs/arquitetura.md
 
 3. Tem algo me impedindo?
 Não tem nada nos impedindo
@@ -26,10 +26,17 @@ Não tem nada nos impedindo
 -----------------------------------------------------
 Aula 7 (Fase B) - 07/05  
 1. O que fiz desde a última aula?
+Letícia:
+Luiza e Laura: documentar a arquitetura em docs/arquitetura.md
+Ibide: faltei
 
 2. O que vou fazer hoje?
+Letícia: fazer a pesquisa-mercado.md
+Grupo (juntas): atualização no standup-log.md e sprint-1.md (sprint review)
 
 3. Tem algo me impedindo?
+Não tem nada nos impedindo
+
 -----------------------------------------------------
 Aula 8 (Fase B) - 14/05  
 1. O que fiz desde a última aula?
