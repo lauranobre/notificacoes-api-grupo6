@@ -25,11 +25,13 @@ git clone https://github.com/lauranobre/notificacoes-api.git
 
 ## 📁 Estrutura do Projeto
 src/
+├── config/ → Configurações de banco, upload e cache
 ├── controllers/ → Recebe requisições, retorna respostas
+├── database/ → Migrations e Seeders (Banco de dados)
 ├── services/ → Lógica de negócio e validações
-├── models/ → Acesso e manipulação de dados
+├── models/ → Modelos Sequelize (Eventos, Participantes, Inscrições)
 ├── routes/ → Mapeamento de URLs
-├── middlewares/ → Funções intermediárias (log, erros, CORS)
+├── middlewares/ → Funções intermediárias (log, erros, cache)
 ├── errors/ → Classes de erro customizadas
 ├── helpers/ → Funções auxiliares (validação, etc.)
 ├── swagger.js → Configuração da documentação
@@ -41,3 +43,13 @@ src/
 |---------|-----------|
 | `npm start` | Inicia o servidor (produção) |
 | `npm run dev` | Inicia com Nodemon (desenvolvimento) |
+| `npm run db:migrate` | Executa migrations pendentes |
+| `npm run db:migrate:undo` | Desfaz última migration |
+| `npm run db:seed` | Insere dados iniciais |
+| `npm run db:reset` | Recria banco completo |
+
+
+## 🗄️ Banco de Dados
+- **SGBD:** MySQL
+- **ORM:** Sequelize
+- **Tabelas:** eventos, participantes, inscricoes, notificacoes
