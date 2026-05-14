@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
 app.use(notFound);
 app.use(errorHandler);
 

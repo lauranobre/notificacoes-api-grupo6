@@ -1,7 +1,5 @@
-/**
- * src/controllers/InscricaoController.js
- */
 const InscricaoService = require('../services/InscricaoService');
+const parseId = require('../helpers/parseId');
 
 // Criar uma nova inscrição
 async function store(req, res, next) {
@@ -26,8 +24,10 @@ async function index(req, res, next) {
 // Listar inscrições filtradas por um evento específico
 async function listarPorEvento(req, res, next) {
     try {
-        const { eventoId } = req.params;
+        const eventoId = parseId(req.params.eventoId);
+
         const inscricoes = await InscricaoService.listarPorEvento(eventoId);
+
         res.json(inscricoes);
     } catch (erro) {
         next(erro);
@@ -37,8 +37,10 @@ async function listarPorEvento(req, res, next) {
 // Cancelar uma inscrição (mudar status para 'cancelada')
 async function cancelar(req, res, next) {
     try {
-        const { id } = req.params;
+        const id = parseId(req.params.id);
+
         const inscricaoCancelada = await InscricaoService.cancelar(id);
+
         res.json(inscricaoCancelada);
     } catch (erro) {
         next(erro);
@@ -47,8 +49,10 @@ async function cancelar(req, res, next) {
 
 async function obterDetalhes(req, res, next) {
     try {
-        const { id } = req.params;
+        const id = parseId(req.params.id);
+
         const inscricao = await InscricaoService.buscarPorId(id);
+
         res.json(inscricao);
     } catch (erro) {
         next(erro);

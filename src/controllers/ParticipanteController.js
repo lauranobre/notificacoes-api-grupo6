@@ -1,5 +1,5 @@
 const ParticipanteService = require('../services/ParticipanteService');
-// const { update } = require('./EventoController');
+const parseId = require('../helpers/parseId');
 
 async function index(req, res, next) {
   try {
@@ -12,8 +12,10 @@ async function index(req, res, next) {
 
 async function show(req, res, next) {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseId(req.params.id);
+
     const participante = await ParticipanteService.buscarPorId(id);
+
     res.json(participante);
   } catch (erro) {
     next(erro);
@@ -23,6 +25,7 @@ async function show(req, res, next) {
 async function store(req, res, next) {
   try {
     const novo = await ParticipanteService.criar(req.body);
+
     res.status(201).json(novo);
   } catch (erro) {
     next(erro);
@@ -31,8 +34,10 @@ async function store(req, res, next) {
 
 async function update(req, res, next) {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseId(req.params.id);
+
     const atualizado = await ParticipanteService.atualizar(id, req.body);
+
     res.json(atualizado);
   } catch (erro) {
     next(erro);
@@ -41,12 +46,20 @@ async function update(req, res, next) {
 
 async function destroy(req, res, next) {
   try {
-    const id = parseInt(req.params.id);
+    const id = parseId(req.params.id);
+
     await ParticipanteService.deletar(id);
+
     res.status(204).send();
   } catch (erro) {
     next(erro);
   }
 }
 
-module.exports = { index, show, store, update, destroy };
+module.exports = {
+  index,
+  show,
+  store,
+  update,
+  destroy
+};

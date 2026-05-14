@@ -17,7 +17,6 @@ const Notificacao = sequelize.define(
         destinatarioEmail: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: "destinatario_email",
             validate: {
                 isEmail: { msg: "E-mail do destinatário inválido" },
             },
@@ -33,13 +32,11 @@ const Notificacao = sequelize.define(
         dataEnvio: {
             type: DataTypes.DATE,
             allowNull: true,
-            field: "data_envio",
         },
         enviada: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false,
-
         },
     },
     {

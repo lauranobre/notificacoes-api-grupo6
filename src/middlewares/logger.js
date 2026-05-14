@@ -2,7 +2,7 @@
 function logger(req, res, next) {
     const dataHora = new Date().toLocaleString("pt-BR");
     const metodo = req.method;
-    const url = req.url;
+    const url = req.originalUrl;
 
     console.log(`[${dataHora}] ${metodo} ${url}`);
     

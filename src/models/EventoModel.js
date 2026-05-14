@@ -1,6 +1,7 @@
 // src/models/EventoModel.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+
 const Evento = sequelize.define(
     "Evento",
     {
@@ -24,14 +25,23 @@ const Evento = sequelize.define(
         data: {
             type: DataTypes.DATE,
             allowNull: false,
+            validate: {
+                isAfter: {
+                    args: new Date().toISOString().split('T')[0], 
+                    msg: "A data do evento não pode ser no passado",
+                }
+            }
         },
         local: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false, 
+            validate: {
+                notEmpty: { msg: "O local não pode ser vazio" }
+            }
         },
         capacidade: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: true, 
             validate: {
                 min: { args: [1], msg: "Capacidade deve ser pelo menos 1" },
             },
@@ -39,13 +49,16 @@ const Evento = sequelize.define(
         banner: {
             type: DataTypes.STRING,
             allowNull: true,
+            validate: {
+                isUrl: { msg: "O banner deve ser uma URL válida" } 
+            }
         },
     },
     {
         tableName: "eventos",
-        timestamps: true, // cria createdAt e updatedAt automaticamente
-
-        underscored: true, // usa snake_case nas colunas (created_at em vez de createdAt)
+        timestamps: true,
+        underscored: true, 
     },
 );
+
 module.exports = Evento;

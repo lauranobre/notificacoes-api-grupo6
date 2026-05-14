@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const InscricaoController = require("../controllers/InscricaoController");
 
+const InscricaoController = require("../controllers/InscricaoController");
 
 /**
  * @swagger
@@ -56,6 +56,27 @@ router.get("/", InscricaoController.index);
 
 /**
  * @swagger
+ * /inscricoes/evento/{eventoId}:
+ *   get:
+ *     summary: Listar inscrições de um evento
+ *     tags: [Inscricoes]
+ *     parameters:
+ *       - in: path
+ *         name: eventoId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID do evento
+ *     responses:
+ *       200:
+ *         description: Lista de inscrições do evento
+ *       404:
+ *         description: Evento não encontrado
+ */
+router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
+
+/**
+ * @swagger
  * /inscricoes/{id}:
  *   get:
  *     summary: Buscar inscrição por ID (com detalhes)
@@ -107,26 +128,10 @@ router.get("/:id", InscricaoController.obterDetalhes);
  *         description: Inscrição criada com sucesso
  *       400:
  *         description: Dados inválidos
+ *       409:
+ *         description: Inscrição duplicada
  */
 router.post("/", InscricaoController.store);
-
-/**
- * @swagger
- * /inscricoes/evento/{eventoId}:
- *   get:
- *     summary: Listar inscrições de um evento
- *     tags: [Inscricoes]
- *     parameters:
- *       - in: path
- *         name: eventoId
- *         required: true
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Lista de inscrições do evento
- */
-router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
 
 /**
  * @swagger
@@ -140,6 +145,7 @@ router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
  *         required: true
  *         schema:
  *           type: integer
+ *         description: ID da inscrição
  *     responses:
  *       200:
  *         description: Inscrição cancelada

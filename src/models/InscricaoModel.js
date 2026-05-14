@@ -1,5 +1,7 @@
+// src/models/InscricaoModel.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+
 const Inscricao = sequelize.define(
     "Inscricao",
     {
@@ -12,12 +14,11 @@ const Inscricao = sequelize.define(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
-            field: "data_inscricao",
         },
         status: {
-            type: DataTypes.ENUM("confirmada", "cancelada"),
+            type: DataTypes.ENUM("pendente", "confirmada", "cancelada"),
             allowNull: false,
-            defaultValue: "confirmada",
+            defaultValue: "pendente", 
         },
     },
     {
@@ -26,4 +27,5 @@ const Inscricao = sequelize.define(
         underscored: true,
     },
 );
+
 module.exports = Inscricao;

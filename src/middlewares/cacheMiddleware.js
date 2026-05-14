@@ -19,9 +19,9 @@ function cacheMiddleware(duracaoSegundos) {
         res.json = (dados) => {
             cache.set(chave, dados, duracaoSegundos);
             console.log(`[CACHE MISS] ${chave} — armazenado por ${duracaoSegundos}s`);
-            jsonOriginal(dados);
-        };
 
+            return jsonOriginal(dados);
+        };
         next();
     };
 }

@@ -1,6 +1,6 @@
+const { Op } = require('sequelize'); 
 const { Evento } = require('../models');
 const { NotFoundError, ValidationError } = require('../errors/AppError');
-const { Op } = require('sequelize'); // Importado aqui para usar em todo o arquivo
 
 async function listarTodos(opcoes = {}) {
   const {
@@ -11,14 +11,12 @@ async function listarTodos(opcoes = {}) {
     busca = null,
   } = opcoes;
 
-  // Construir filtro de busca
   const where = {};
   
   if (busca) {
     where.nome = { [Op.like]: `%${busca}%` };
   }
 
-  // Buscar com paginação
   const { count, rows } = await Evento.findAndCountAll({
     where,
     order: [[ordenarPor, ordem.toUpperCase()]],
@@ -35,20 +33,16 @@ async function listarTodos(opcoes = {}) {
   };
 }
 
-/**
- * RESOLUÇÃO DO DESAFIO - PARTE 2
- * Retorna apenas eventos com data posterior a hoje[cite: 1]
- */
 async function listarFuturos() {
-  const agora = new Date(); // Obtém a data/hora atual[cite: 1]
+  const agora = new Date(); 
   
   const eventos = await Evento.findAll({
     where: {
       data: {
-        [Op.gt]: agora // Operador "Greater Than" para buscar datas MAIORES que agora[cite: 1]
+        [Op.gt]: agora 
       }
     },
-    order: [['data', 'ASC']], // Ordena do mais próximo para o mais distante[cite: 1]
+    order: [['data', 'ASC']], 
   });
 
   return eventos;
@@ -104,7 +98,7 @@ async function deletar(id) {
 
 module.exports = {
   listarTodos,
-  listarFuturos, // Não esqueça de exportar a nova função!
+  listarFuturos, 
   buscarPorId,
   criar,
   atualizar,

@@ -8,7 +8,7 @@ const { create } = require('xmlbuilder2');
 /**
  * ROTA: Exportar Eventos em XML
  */
-router.get('/eventos/xml', async (req, res, next) => {
+router.get('/eventos/xml', ExportController.exportarEventosXML);
     try {
         const eventos = await Evento.findAll({ order: [['data', 'ASC']] });
 
@@ -36,7 +36,7 @@ router.get('/eventos/xml', async (req, res, next) => {
     } catch (erro) {
         next(erro);
     }
-});
+;
 
 /**
  * ROTA: Exportar Eventos em JSON (Download Forçado)

@@ -9,8 +9,8 @@ const Notificacao = require("./NotificacaoModel");
 // ── Relacionamentos ──
 
 // Um Evento tem muitas Inscrições 
-Evento.hasMany(Inscricao, { foreignKey: "evento_id", as: "inscricoes" }); // cria o evento_id na tabela de inscrições
-Inscricao.belongsTo(Evento, { foreignKey: "evento_id", as: "evento" });
+Evento.belongsToMany(Participante, { through: Inscricao, foreignKey: 'evento_id', as: 'participantes' });
+Participante.belongsToMany(Evento, { through: Inscricao, foreignKey: 'participante_id', as: 'eventos' });
 
 // Um Participante tem muitas Inscrições
 Participante.hasMany(Inscricao, {

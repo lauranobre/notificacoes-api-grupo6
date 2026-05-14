@@ -1,44 +1,68 @@
 // src/services/ParticipanteService.js
 const { Participante } = require('../models');
-const { NotFoundError, ValidationError } = require('../errors/AppError'); // Importei ValidationError também
+const { NotFoundError, ValidationError } = require('../errors/AppError');
 
 async function listarTodos() {
-  // Conforme o roteiro: findAll com ordenação por nome
   return await Participante.findAll({
     order: [['nome', 'ASC']],
   });
 }
 
 async function buscarPorId(id) {
-  // Conforme o roteiro: findByPk
   const participante = await Participante.findByPk(id);
 
-  // Se não encontrar, lança o erro que o professor pediu
   if (!participante) {
-    throw new NotFoundError('Participante'); // Passando apenas o nome do recurso como no exemplo dele
-  }
+    throw new NotFoundError('Participante'); 
+  } // <--- O ERRO ESTAVA AQUI: Faltava fechar essa chave!
 
   return participante;
 }
 
 async function criar(dados) {
-  // Conforme o roteiro: try/catch para erros do Sequelize
   try {
     const novoParticipante = await Participante.create(dados);
     return novoParticipante;
   } catch (erro) {
-    // Seguindo exatamente o padrão que o professor fez no EventoService:
     if (erro.name === 'SequelizeValidationError') {
       const mensagens = erro.errors.map(e => e.message).join('; ');
       throw new ValidationError(mensagens);
     }
-    
-    // Se for outro erro (como o UniqueConstraint), o errorHandler da Parte 4 resolve
     throw erro; 
   }
 }
 
-async function atualizar(id, dados) { /* TODO: próxima aula */ }
-async function deletar(id) { /* TODO: próxima aula */ }
+async function atualizar(id, dados) {
+  // 1. Busca o participante para garantir que existe
+  const participante = await Participante.findByPk(id);
+  
+  if (!participante) {
+    throw new NotFoundError('Participante');
+  }
+
+  // 2. Tenta atualizar os dados capturando erros de validação
+  try {
+    await participante.update(dados);
+    return participante;
+  } catch (erro) {
+    if (erro.name === 'SequelizeValidationError') {
+      const mensagens = erro.errors.map(e => e.message).join('; ');
+      throw new ValidationError(mensagens);
+    }
+    throw erro;
+  }
+}
+
+async function deletar(id) {
+  // 1. Busca o participante
+  const participante = await Participante.findByPk(id);
+  
+  if (!participante) {
+    throw new NotFoundError('Participante');
+  }
+
+  // 2. Deleta o registro do banco
+  await participante.destroy();
+  return true;
+}
 
 module.exports = { listarTodos, buscarPorId, criar, atualizar, deletar };

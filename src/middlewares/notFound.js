@@ -1,7 +1,11 @@
 function notFound(req, res, next) {
 
     res.status(404).json({
-        erro: "Rota não encontrada",
+        erro: {
+            tipo,
+            mensagem,
+            statusCode
+        },
         metodo: req.method,
         url: req.originalUrl,
     });
