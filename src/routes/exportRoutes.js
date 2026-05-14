@@ -5,18 +5,13 @@ const { Evento, Participante, Inscricao } = require('../models');
 // A biblioteca que eu instalei via npm
 const { create } = require('xmlbuilder2');
 
-/**
- * ROTA: Exportar Eventos em XML
- */
-router.get('/eventos/xml', ExportController.exportarEventosXML);
+router.get('/eventos/xml', async (req, res, next) => { 
     try {
         const eventos = await Evento.findAll({ order: [['data', 'ASC']] });
 
-        // Inicia a estrutura do XML
         const xml = create({ version: '1.0', encoding: 'UTF-8' })
             .ele('eventos');
 
-        // Percorre cada evento do banco e adiciona ao XML
         eventos.forEach(evento => {
             xml.ele('evento')
                 .ele('id').txt(String(evento.id)).up()
@@ -25,22 +20,18 @@ router.get('/eventos/xml', ExportController.exportarEventosXML);
                 .ele('data').txt(evento.data.toISOString()).up()
                 .ele('local').txt(evento.local || '').up()
                 .ele('capacidade').txt(String(evento.capacidade || 0)).up()
-            .up(); // Fecha a tag <evento>
+            .up(); 
         });
 
         const xmlString = xml.end({ prettyPrint: true });
         
-        // IMPORTANTE: Avisar o navegador/Postman que o conteúdo é XML
         res.set('Content-Type', 'application/xml');
         res.send(xmlString);
     } catch (erro) {
         next(erro);
     }
-;
+});
 
-/**
- * ROTA: Exportar Eventos em JSON (Download Forçado)
- */
 router.get('/eventos/json', async (req, res, next) => {
     try {
         const eventos = await Evento.findAll({ order: [['data', 'ASC']], raw: true });
