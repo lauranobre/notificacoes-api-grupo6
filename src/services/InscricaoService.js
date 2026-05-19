@@ -3,9 +3,21 @@ const { NotFoundError, ValidationError } = require('../errors/AppError');
 const appEmitter = require('../events/eventEmitter');
 
 async function criar(dados) {
+
+  console.log("DADOS RECEBIDOS:", dados);
+
   const { eventoId, participanteId } = dados;
 
-  const evento = await Evento.findByPk(eventoId);
+  console.log("TIPO:", typeof eventoId);
+  console.log("VALOR:", eventoId);
+
+  console.log("eventoId:", eventoId);
+  console.log("participanteId:", participanteId);
+
+  const evento = await Evento.findByPk(Number(eventoId));
+
+  console.log("EVENTO ENCONTRADO:", evento);
+
   if (!evento) throw new NotFoundError('Evento');
 
   const participante = await Participante.findByPk(participanteId);
