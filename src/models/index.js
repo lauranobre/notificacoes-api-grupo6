@@ -32,6 +32,16 @@ Notificacao.belongsTo(Inscricao, {
     as: "inscricao", //apelido para consulta
 });
 
+Inscricao.belongsTo(Evento, {
+    foreignKey: "evento_id",
+    as: "evento",
+});
+
+Evento.hasMany(Inscricao, {
+    foreignKey: "evento_id",
+    as: "inscricoes",
+});
+
 //Exportações
 module.exports = {
     sequelize,

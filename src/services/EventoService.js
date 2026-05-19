@@ -1,6 +1,7 @@
 const { Op } = require('sequelize'); 
 const { Evento } = require('../models');
 const { NotFoundError, ValidationError } = require('../errors/AppError');
+const appEmitter = require('../events/eventEmitter'); // <-- ADICIONADO
 
 async function listarTodos(opcoes = {}) {
   const {
@@ -59,6 +60,10 @@ async function buscarPorId(id) {
 async function criar(dados) {
   try {
     const novoEvento = await Evento.create(dados);
+    
+    // --- PARTE DO MEMBRO 2 ADICIONADA AQUI ---
+    appEmitter.emit('evento:criado', novoEvento);
+    
     return novoEvento;
   } catch (erro) {
     if (erro.name === 'SequelizeValidationError') {

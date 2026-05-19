@@ -1,4 +1,3 @@
-//Aula 17, parte 3 exportações
 const exportRoutes = require('./routes/exportRoutes');
 
 const express = require("express");
@@ -6,18 +5,13 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 
+//Registrar observers
+require('./events/notificacaoObserver');
+
 const app = express();
 
-// ============================================
-// MIDDLEWARES GLOBAIS
-// ============================================
-
-
-//Aula 18, PARTE 1
 const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-// ============================================
-
 
 app.use(express.json());
 app.use(cors());
@@ -25,24 +19,17 @@ app.use(cors());
 const responseTime = require("./middlewares/responseTime");
 app.use(responseTime);
 
-// (Opcional - recomendo)
 const logger = require("./middlewares/logger");
 app.use(logger);
 
-// ============================================
-// DOCUMENTAÇÃO
-// ============================================
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// ============================================
-// ROTAS
-// ============================================
 
 const eventoRoutes = require("./routes/eventoRoutes");
 const participanteRoutes = require("./routes/participanteRoutes");
 const inscricaoRoutes = require("./routes/inscricaoRoutes");
+const notificacaoRoutes = require('./routes/notificacaoRoutes');
 
+app.use('/notificacoes', notificacaoRoutes);
 app.use("/eventos", eventoRoutes);
 app.use("/participantes", participanteRoutes);
 app.use("/inscricoes", inscricaoRoutes);
@@ -63,9 +50,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// ============================================
-// MIDDLEWARES DE ERRO
-// ============================================
 
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
