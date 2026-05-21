@@ -46,12 +46,10 @@ async function iniciar() {
     console.log("BANCO:", sequelize.config.database);
 
     // 2. INICIALIZAR O SERVIÇO DE E-MAIL
-    // Isso cria a conta de teste no Ethereal antes do servidor subir
     await EmailService.inicializar(); 
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);
-      // Opcional: log da documentação que estava no código da aula
       console.log(`Documentação: http://localhost:${PORT}/api-docs`);
     });
   } catch (erro) {

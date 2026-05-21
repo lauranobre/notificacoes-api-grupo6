@@ -16,7 +16,6 @@ appEmitter.on('inscricao:criada', async (inscricao) => {
 
     if (!inscricaoCompleta) return;
     const { evento, participante } = inscricaoCompleta;
-    // Montar HTML do e-mail
     const html = `
       <h2>Inscrição Confirmada! ✅</h2>
       <p>Olá <strong>${participante.nome}</strong>,</p>
@@ -43,37 +42,27 @@ appEmitter.on('inscricao:criada', async (inscricao) => {
       </small>
     `;
 
-    // Enviar e-mail
-    const resultado = await EmailService.enviar(
+    // Enviar o e-mail via MailPit
+    await EmailService.enviar(
       participante.email,
       `Inscrição confirmada: ${evento.nome}`,
       html
     );
 
-    // Criar notificação no banco
-    const notificacao = await Notificacao.create({
-
+    // Salvar a notificação no banco com status "enviada"
+    await Notificacao.create({
       inscricao_id: inscricao.id,
       tipo: 'confirmacao',
-      destinatarioEmail: participante.email,
+      destinatario_email: participante.email,
       assunto: `Inscrição confirmada: ${evento.nome}`,
       conteudo: html,
       data_envio: new Date(),
       enviada: true,
-
     });
 
-    console.log(
-      `[OBSERVER] E-mail enviado! Preview: ${resultado.previewUrl}`
-    );
-
+    console.log(`[NOTIFICAÇÃO] Confirmação enviada para ${participante.email}`);
   } catch (erro) {
-
-    console.error(
-      '[OBSERVER] Erro ao enviar notificação:',
-      erro.message
-    );
-
+    console.error('[NOTIFICAÇÃO] Erro ao enviar:', erro.message);
   }
 });
 
