@@ -7,18 +7,21 @@ function errorHandler(err, req, res, next) {
     if (err.name === 'SequelizeValidationError') {
         statusCode = 400; 
         tipo = 'ValidationError';
-        mensagem = err.errors.map(e => e.message).join('; ');
+        // REMOVIDO O 'let' DAQUI: apenas reatribui a variável do topo
+        mensagem = err.errors ? err.errors.map(e => e.message).join('; ') : err.message;
     }
 
     if (err.name === 'SequelizeUniqueConstraintError') {
         statusCode = 409; 
         tipo = 'ConflictError';
-        mensagem = 'Registro duplicado: ' + err.errors.map(e => e.message).join('; ');
+        // REMOVIDO O 'let' DAQUI
+        mensagem = 'Registro duplicado: ' + (err.errors ? err.errors.map(e => e.message).join('; ') : err.message);
     }
 
     if (err.name === 'SequelizeForeignKeyConstraintError') {
         statusCode = 400;
         tipo = 'ForeignKeyError';
+        // REMOVIDO O 'let' DAQUI
         mensagem = 'Referencia invalida: o registro relacionado nao existe';
     }
 

@@ -1,0 +1,429 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v12.5.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2026-05-21T17:45:04.720Z",
+				"time": 32.169999999999995,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 7,\n  \"participanteId\": 1\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "186"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"ba-H9tT7Eu3bUem/7aqxXOx5sotyC0\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 21 May 2026 17:11:26 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 186,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dataInscricao\":\"2026-05-21T17:11:26.614Z\",\"id\":14,\"evento_id\":7,\"participante_id\":1,\"status\":\"confirmada\",\"updatedAt\":\"2026-05-21T17:11:26.615Z\",\"createdAt\":\"2026-05-21T17:11:26.615Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 32.169999999999995,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "New Request"
+			},
+			{
+				"startedDateTime": "2026-05-21T17:45:04.720Z",
+				"time": 50.547000000000004,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "2454"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"996-odIfZ9ubnJMxkob+Sj1RTHLvY7g\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 21 May 2026 17:11:33 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 2454,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":2,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"ana@email.com\",\"assunto\":\"Inscrição confirmada: Feira de Ciências\",\"conteudo\":\"\\n            <!DOCTYPE html>\\n            <html>\\n            <head>\\n                <style>\\n                    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }\\n                    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }\\n                    h2 { color: #2ecc71; }\\n                    .detalhes { background: #f9f9f9; padding: 15px; border-left: 5px solid #2ecc71; margin: 15px 0; }\\n                </style>\\n            </head>\\n            <body>\\n                <div class=\\\"card\\\">\\n                    <h2>Inscrição Confirmada! ✅</h2>\\n                    <p>Olá, <strong>Ana Silva</strong>!</p>\\n                    <p>Sua vaga está garantida no evento abaixo:</p>\\n                    <div class=\\\"detalhes\\\">\\n                        <p><strong>Evento:</strong> Feira de Ciências</p>\\n                        <p><strong>Código da Inscrição:</strong> #14</p>\\n                        <p><strong>Status:</strong> Confirmada</p>\\n                    </div>\\n                    <p>Aproveite o evento!</p>\\n                </div>\\n            </body>\\n            </html>\\n        \",\"dataEnvio\":\"2026-05-21T17:11:26.000Z\",\"enviada\":true,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"inscricao_id\":14,\"inscricao\":{\"id\":14,\"dataInscricao\":\"2026-05-21T17:11:26.000Z\",\"status\":\"confirmada\",\"evento_id\":7,\"participante_id\":1,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"evento\":{\"nome\":\"Feira de Ciências\"},\"participante\":{\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}}},{\"id\":1,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"carlos@email.com\",\"assunto\":\"Inscrição confirmada: Palestra sobre APIs REST\",\"conteudo\":\"Olá Carlos Souza! Sua inscrição no evento \\\"Palestra sobre APIs REST\\\" foi confirmada.\",\"dataEnvio\":null,\"enviada\":false,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"inscricao_id\":9,\"inscricao\":{\"id\":9,\"dataInscricao\":\"2026-05-19T10:46:36.000Z\",\"status\":\"confirmada\",\"evento_id\":3,\"participante_id\":2,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"evento\":{\"nome\":\"Palestra sobre APIs REST\"},\"participante\":{\"nome\":\"Carlos Souza\",\"email\":\"carlos@email.com\"}}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 50.547000000000004,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "New Request"
+			},
+			{
+				"startedDateTime": "2026-05-21T17:45:04.720Z",
+				"time": 46.135000000000005,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "671"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"29f-ZBP9nUcoHuKvDQRN6LvlEDB6FEM\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 21 May 2026 16:44:32 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 671,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":1,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"carlos@email.com\",\"assunto\":\"Inscrição confirmada: Palestra sobre APIs REST\",\"conteudo\":\"Olá Carlos Souza! Sua inscrição no evento \\\"Palestra sobre APIs REST\\\" foi confirmada.\",\"dataEnvio\":null,\"enviada\":false,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"inscricao_id\":9,\"inscricao\":{\"id\":9,\"dataInscricao\":\"2026-05-19T10:46:36.000Z\",\"status\":\"confirmada\",\"evento_id\":3,\"participante_id\":2,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"evento\":{\"nome\":\"Palestra sobre APIs REST\"},\"participante\":{\"nome\":\"Carlos Souza\",\"email\":\"carlos@email.com\"}}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 46.135000000000005,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Listar notificações"
+			},
+			{
+				"startedDateTime": "2026-05-21T17:45:04.720Z",
+				"time": 75.336,
+				"request": {
+					"method": "PATCH",
+					"url": "http://localhost:3000/inscricoes/12/cancelar",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "185"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"b9-TIoewwJCfh5r7RKgv0nJAgd0GqM\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 21 May 2026 16:43:36 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 185,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":12,\"dataInscricao\":\"2026-05-21T16:41:17.000Z\",\"status\":\"cancelada\",\"evento_id\":6,\"participante_id\":3,\"createdAt\":\"2026-05-21T16:41:17.000Z\",\"updatedAt\":\"2026-05-21T16:43:36.239Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 75.336,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Cancelar inscrição"
+			},
+			{
+				"startedDateTime": "2026-05-21T17:45:04.720Z",
+				"time": 141.317,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 6,\n  \"participanteId\": 3\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "186"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"ba-xR7C+kKQRSk5WU2IarQT2o5iEfk\""
+						},
+						{
+							"name": "Date",
+							"value": "Thu, 21 May 2026 16:41:17 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 186,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dataInscricao\":\"2026-05-21T16:41:17.455Z\",\"id\":12,\"evento_id\":6,\"participante_id\":3,\"status\":\"confirmada\",\"updatedAt\":\"2026-05-21T16:41:17.458Z\",\"createdAt\":\"2026-05-21T16:41:17.458Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 141.317,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "criar inscrição"
+			}
+		]
+	}
+}
