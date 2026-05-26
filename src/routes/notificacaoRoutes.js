@@ -1,32 +1,59 @@
 const express = require('express');
 const router = express.Router();
-const { Notificacao, Inscricao, Evento, Participante } = require('../models');
+
+
+const NotificacaoService = require('../services/NotificacaoService');
 const EmailService = require('../services/EmailService');
+
 
 router.get('/', async (req, res, next) => {
   try {
-    const notificacoes = await Notificacao.findAll({
-      include: [{
-        model: Inscricao,
-        as: 'inscricao',
-        include: [
-          { model: Evento, as: 'evento', attributes: ['nome'] },
-          { model: Participante, as: 'participante', attributes: ['nome', 'email'] },
-        ],
-      }],
-      order: [['created_at', 'DESC']],
+    const notificacoes = await NotificacaoService.listarTodas({
+      tipo: req.query.tipo,
+      enviada: req.query.enviada,
     });
-
     res.json(notificacoes);
-
   } catch (erro) {
     next(erro);
   }
 });
 
+
+router.get('/estatisticas', async (req, res, next) => {
+  try {
+    const stats = await NotificacaoService.obterEstatisticas();
+    res.json(stats);
+  } catch (erro) {
+    next(erro);
+  }
+});
+
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const notificacao = await NotificacaoService.buscarPorId(parseInt(req.params.id));
+    res.json(notificacao);
+  } catch (erro) {
+    next(erro);
+  }
+});
+
+
+router.post('/:id/reenviar', async (req, res, next) => {
+  try {
+    const resultado = await NotificacaoService.reenviar(parseInt(req.params.id));
+    res.json({
+      mensagem: 'Notificação reenviada com sucesso',
+      visualizarEm: resultado.visualizarEm,
+    });
+  } catch (erro) {
+    next(erro);
+  }
+});
+
+
 router.post('/teste-email', async (req, res, next) => {
   try {
-
     const resultado = await EmailService.enviar(
       'teste@exemplo.com',
       'Teste da API de Notificações',
@@ -37,7 +64,6 @@ router.post('/teste-email', async (req, res, next) => {
       mensagem: 'E-mail de teste enviado!',
       visualizarEm: resultado.visualizarEm,
     });
-
   } catch (erro) {
     next(erro);
   }

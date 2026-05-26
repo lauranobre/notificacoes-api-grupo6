@@ -1,0 +1,421 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v12.6.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2026-05-26T10:55:40.422Z",
+				"time": 225.95399999999998,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/notificacoes/2/reenviar",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "94"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"5e-ymB4gId6HTLi7cRC5V7NII56LmM\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 26 May 2026 10:53:46 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 94,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"mensagem\":\"Notificação reenviada com sucesso\",\"visualizarEm\":\"http://10.137.146.106:8025\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 225.95399999999998,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Reenvia e retorna URL do MailPit"
+			},
+			{
+				"startedDateTime": "2026-05-26T10:55:40.422Z",
+				"time": 71.87100000000001,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes/estatisticas",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "106"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"6a-ppOxUbLRGFhwSZO3kTled1+SO58\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 26 May 2026 10:45:47 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 106,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"total\":2,\"enviadas\":1,\"pendentes\":1,\"taxaEnvio\":\"50%\",\"porTipo\":[{\"tipo\":\"confirmacao\",\"quantidade\":2}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 71.87100000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Dashboard com contagens"
+			},
+			{
+				"startedDateTime": "2026-05-26T10:55:40.422Z",
+				"time": 113.234,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes?enviada=true",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1798"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"706-4XdVWb2JH66J4oVTtdDkjE3gmwA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 26 May 2026 10:45:42 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1798,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":2,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"ana@email.com\",\"assunto\":\"Inscrição confirmada: Feira de Ciências\",\"conteudo\":\"\\n            <!DOCTYPE html>\\n            <html>\\n            <head>\\n                <style>\\n                    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }\\n                    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }\\n                    h2 { color: #2ecc71; }\\n                    .detalhes { background: #f9f9f9; padding: 15px; border-left: 5px solid #2ecc71; margin: 15px 0; }\\n                </style>\\n            </head>\\n            <body>\\n                <div class=\\\"card\\\">\\n                    <h2>Inscrição Confirmada! ✅</h2>\\n                    <p>Olá, <strong>Ana Silva</strong>!</p>\\n                    <p>Sua vaga está garantida no evento abaixo:</p>\\n                    <div class=\\\"detalhes\\\">\\n                        <p><strong>Evento:</strong> Feira de Ciências</p>\\n                        <p><strong>Código da Inscrição:</strong> #14</p>\\n                        <p><strong>Status:</strong> Confirmada</p>\\n                    </div>\\n                    <p>Aproveite o evento!</p>\\n                </div>\\n            </body>\\n            </html>\\n        \",\"dataEnvio\":\"2026-05-21T17:11:26.000Z\",\"enviada\":true,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"inscricao_id\":14,\"inscricao\":{\"id\":14,\"dataInscricao\":\"2026-05-21T17:11:26.000Z\",\"status\":\"confirmada\",\"evento_id\":7,\"participante_id\":1,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"evento\":{\"id\":7,\"nome\":\"Feira de Ciências\"},\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 113.234,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "Só as enviadas"
+			},
+			{
+				"startedDateTime": "2026-05-26T10:55:40.422Z",
+				"time": 184.895,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "2482"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"9b2-Q+/bXORX3yfYL0fKCjSyPwVkYoQ\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 26 May 2026 10:45:24 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 2482,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":2,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"ana@email.com\",\"assunto\":\"Inscrição confirmada: Feira de Ciências\",\"conteudo\":\"\\n            <!DOCTYPE html>\\n            <html>\\n            <head>\\n                <style>\\n                    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }\\n                    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }\\n                    h2 { color: #2ecc71; }\\n                    .detalhes { background: #f9f9f9; padding: 15px; border-left: 5px solid #2ecc71; margin: 15px 0; }\\n                </style>\\n            </head>\\n            <body>\\n                <div class=\\\"card\\\">\\n                    <h2>Inscrição Confirmada! ✅</h2>\\n                    <p>Olá, <strong>Ana Silva</strong>!</p>\\n                    <p>Sua vaga está garantida no evento abaixo:</p>\\n                    <div class=\\\"detalhes\\\">\\n                        <p><strong>Evento:</strong> Feira de Ciências</p>\\n                        <p><strong>Código da Inscrição:</strong> #14</p>\\n                        <p><strong>Status:</strong> Confirmada</p>\\n                    </div>\\n                    <p>Aproveite o evento!</p>\\n                </div>\\n            </body>\\n            </html>\\n        \",\"dataEnvio\":\"2026-05-21T17:11:26.000Z\",\"enviada\":true,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"inscricao_id\":14,\"inscricao\":{\"id\":14,\"dataInscricao\":\"2026-05-21T17:11:26.000Z\",\"status\":\"confirmada\",\"evento_id\":7,\"participante_id\":1,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"evento\":{\"id\":7,\"nome\":\"Feira de Ciências\"},\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}}},{\"id\":1,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"carlos@email.com\",\"assunto\":\"Inscrição confirmada: Palestra sobre APIs REST\",\"conteudo\":\"Olá Carlos Souza! Sua inscrição no evento \\\"Palestra sobre APIs REST\\\" foi confirmada.\",\"dataEnvio\":null,\"enviada\":false,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"inscricao_id\":9,\"inscricao\":{\"id\":9,\"dataInscricao\":\"2026-05-19T10:46:36.000Z\",\"status\":\"confirmada\",\"evento_id\":3,\"participante_id\":2,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"evento\":{\"id\":3,\"nome\":\"Palestra sobre APIs REST\"},\"participante\":{\"id\":2,\"nome\":\"Carlos Souza\",\"email\":\"carlos@email.com\"}}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 184.895,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "todas as notiifcações"
+			},
+			{
+				"startedDateTime": "2026-05-26T10:55:40.422Z",
+				"time": 51.903,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes?tipo=confirmacao",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "2482"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"9b2-Q+/bXORX3yfYL0fKCjSyPwVkYoQ\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 26 May 2026 10:45:35 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 2482,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":2,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"ana@email.com\",\"assunto\":\"Inscrição confirmada: Feira de Ciências\",\"conteudo\":\"\\n            <!DOCTYPE html>\\n            <html>\\n            <head>\\n                <style>\\n                    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }\\n                    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }\\n                    h2 { color: #2ecc71; }\\n                    .detalhes { background: #f9f9f9; padding: 15px; border-left: 5px solid #2ecc71; margin: 15px 0; }\\n                </style>\\n            </head>\\n            <body>\\n                <div class=\\\"card\\\">\\n                    <h2>Inscrição Confirmada! ✅</h2>\\n                    <p>Olá, <strong>Ana Silva</strong>!</p>\\n                    <p>Sua vaga está garantida no evento abaixo:</p>\\n                    <div class=\\\"detalhes\\\">\\n                        <p><strong>Evento:</strong> Feira de Ciências</p>\\n                        <p><strong>Código da Inscrição:</strong> #14</p>\\n                        <p><strong>Status:</strong> Confirmada</p>\\n                    </div>\\n                    <p>Aproveite o evento!</p>\\n                </div>\\n            </body>\\n            </html>\\n        \",\"dataEnvio\":\"2026-05-21T17:11:26.000Z\",\"enviada\":true,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"inscricao_id\":14,\"inscricao\":{\"id\":14,\"dataInscricao\":\"2026-05-21T17:11:26.000Z\",\"status\":\"confirmada\",\"evento_id\":7,\"participante_id\":1,\"createdAt\":\"2026-05-21T17:11:26.000Z\",\"updatedAt\":\"2026-05-21T17:11:26.000Z\",\"evento\":{\"id\":7,\"nome\":\"Feira de Ciências\"},\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}}},{\"id\":1,\"tipo\":\"confirmacao\",\"destinatarioEmail\":\"carlos@email.com\",\"assunto\":\"Inscrição confirmada: Palestra sobre APIs REST\",\"conteudo\":\"Olá Carlos Souza! Sua inscrição no evento \\\"Palestra sobre APIs REST\\\" foi confirmada.\",\"dataEnvio\":null,\"enviada\":false,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"inscricao_id\":9,\"inscricao\":{\"id\":9,\"dataInscricao\":\"2026-05-19T10:46:36.000Z\",\"status\":\"confirmada\",\"evento_id\":3,\"participante_id\":2,\"createdAt\":\"2026-05-19T10:46:36.000Z\",\"updatedAt\":\"2026-05-19T10:46:36.000Z\",\"evento\":{\"id\":3,\"nome\":\"Palestra sobre APIs REST\"},\"participante\":{\"id\":2,\"nome\":\"Carlos Souza\",\"email\":\"carlos@email.com\"}}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 51.903,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "só as confirmações"
+			}
+		]
+	}
+}
