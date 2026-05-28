@@ -49,9 +49,6 @@ const Evento = sequelize.define(
         banner: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isUrl: { msg: "O banner deve ser uma URL válida" } 
-            }
         },
     },
     {

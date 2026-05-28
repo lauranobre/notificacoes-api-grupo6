@@ -11,19 +11,27 @@ para participantes de eventos.
 ## 🚀 Como Rodar
 
 1. Clone o repositório:
+
 ```bash
 git clone https://github.com/lauranobre/notificacoes-api.git
 ```
 
 ## ️ Tecnologias
-- Node.js
-- Express.js
-- Swagger (swagger-jsdoc + swagger-ui-express)
-- Dotenv (variáveis de ambiente)
-- Nodemon (desenvolvimento)
-- CORS
+
+* Node.js
+* Express.js
+* Swagger (swagger-jsdoc + swagger-ui-express)
+* Dotenv (variáveis de ambiente)
+* Nodemon (desenvolvimento)
+* CORS
+* Nodemailer
+* MailPit
+* Sequelize
+* MySQL
 
 ## 📁 Estrutura do Projeto
+
+```bash
 src/
 ├── config/ → Configurações de banco, upload e cache
 ├── controllers/ → Recebe requisições, retorna respostas
@@ -37,19 +45,65 @@ src/
 ├── swagger.js → Configuração da documentação
 ├── app.js → Configuração do Express
 └── server.js → Inicialização do servidor
+```
 
 ## 🔧 Scripts
-| Comando | Descrição |
-|---------|-----------|
-| `npm start` | Inicia o servidor (produção) |
-| `npm run dev` | Inicia com Nodemon (desenvolvimento) |
-| `npm run db:migrate` | Executa migrations pendentes |
-| `npm run db:migrate:undo` | Desfaz última migration |
-| `npm run db:seed` | Insere dados iniciais |
-| `npm run db:reset` | Recria banco completo |
 
+| Comando                   | Descrição                            |
+| ------------------------- | ------------------------------------ |
+| `npm start`               | Inicia o servidor (produção)         |
+| `npm run dev`             | Inicia com Nodemon (desenvolvimento) |
+| `npm run db:migrate`      | Executa migrations pendentes         |
+| `npm run db:migrate:undo` | Desfaz última migration              |
+| `npm run db:seed`         | Insere dados iniciais                |
+| `npm run db:reset`        | Recria banco completo                |
 
 ## 🗄️ Banco de Dados
-- **SGBD:** MySQL
-- **ORM:** Sequelize
-- **Tabelas:** eventos, participantes, inscricoes, notificacoes
+
+* **SGBD:** MySQL
+* **ORM:** Sequelize
+* **Tabelas:** eventos, participantes, inscricoes, notificacoes
+
+---
+
+# 🔔 Notificações
+
+| Método | Rota                         | Descrição                                    |
+| ------ | ---------------------------- | -------------------------------------------- |
+| GET    | `/notificacoes`              | Listar notificações (filtros: tipo, enviada) |
+| GET    | `/notificacoes/estatisticas` | Dashboard de envios                          |
+| GET    | `/notificacoes/:id`          | Detalhes da notificação                      |
+| POST   | `/notificacoes/:id/reenviar` | Reenviar notificação                         |
+| POST   | `/notificacoes/teste-email`  | Enviar e-mail de teste                       |
+
+---
+
+# 📤 Exportação
+
+| Método | Rota                             | Descrição                  |
+| ------ | -------------------------------- | -------------------------- |
+| GET    | `/exportar/eventos/xml`          | Eventos em XML             |
+| GET    | `/exportar/eventos/json`         | Eventos em JSON (download) |
+| GET    | `/exportar/relatorio/inscricoes` | Relatório de inscrições    |
+
+---
+
+# 📧 Sistema de Notificações
+
+A API envia e-mails automaticamente utilizando o **Padrão Observer**.
+
+## Funcionalidades
+
+* Confirmação de inscrição enviada automaticamente
+* Cancelamento de inscrição enviado automaticamente
+* Histórico de notificações salvo no banco
+* Estatísticas de envio
+* Reenvio manual de notificações
+* Templates profissionais de e-mail
+
+Durante o desenvolvimento, os e-mails são capturados pelo **MailPit** (servidor SMTP local).
+
+Visualize os e-mails em:
+
+```bash
+http://MAILPIT_IP:8025
