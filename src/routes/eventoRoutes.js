@@ -39,14 +39,60 @@ const cacheMiddleware = require("../middlewares/cacheMiddleware");
  *         data: "2025-08-15"
  *         local: SENAI - Sala 3
  *         capacidade: 30
+ *
+ *     Erro:
+ *       type: object
+ *       properties:
+ *         erro:
+ *           type: object
+ *           properties:
+ *             tipo:
+ *               type: string
+ *               example: NotFoundError
+ *             mensagem:
+ *               type: string
+ *               example: Evento não encontrado(a)
+ *             statusCode:
+ *               type: integer
+ *               example: 404
  */
 
 /**
  * @swagger
  * /eventos:
  *   get:
- *     summary: Listar todos os eventos
+ *     summary: Listar eventos com paginação e filtros
  *     tags: [Eventos]
+ *     parameters:
+ *       - in: query
+ *         name: pagina
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: porPagina
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Itens por página
+ *       - in: query
+ *         name: busca
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome do evento
+ *       - in: query
+ *         name: ordenarPor
+ *         schema:
+ *           type: string
+ *           default: data
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: ordem
+ *         schema:
+ *           type: string
+ *           enum: [ASC, DESC]
+ *           default: ASC
  *     responses:
  *       200:
  *         description: Lista de eventos
@@ -67,11 +113,56 @@ const cacheMiddleware = require("../middlewares/cacheMiddleware");
  *                   type: integer
  *                 totalPaginas:
  *                   type: integer
+ *       500:
+ *         description: Erro interno
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.get("/", cacheMiddleware(30), EventoController.index);
 
 router.get("/futuros", cacheMiddleware(30), EventoController.listarFuturos);
 
+/**
+ * @swagger
+ * /eventos/{id}/banner:
+ *   post:
+ *     summary: Fazer upload do banner do evento
+ *     tags: [Eventos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               banner:
+ *                 type: string
+ *                 format: binary
+ *                 description: Imagem do banner (JPEG, PNG, GIF ou WebP)
+ *     responses:
+ *       200:
+ *         description: Banner atualizado
+ *       400:
+ *         description: Arquivo inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
+ *       404:
+ *         description: Evento não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
+ */
 router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
   try {
     const { Evento } = require('../models');
@@ -114,6 +205,10 @@ router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
  *         description: Evento encontrado
  *       404:
  *         description: Evento não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.get("/:id", cacheMiddleware(60), EventoController.show);
 
@@ -123,6 +218,15 @@ router.get("/:id", cacheMiddleware(60), EventoController.show);
  *   post:
  *     summary: Criar um novo evento
  *     tags: [Eventos]
+ *     responses:
+ *       201:
+ *         description: Evento criado
+ *       400:
+ *         description: Dados inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.post("/", EventoController.store);
 
@@ -132,6 +236,21 @@ router.post("/", EventoController.store);
  *   put:
  *     summary: Atualizar um evento
  *     tags: [Eventos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Evento atualizado
+ *       404:
+ *         description: Evento não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.put("/:id", EventoController.update);
 
@@ -141,6 +260,21 @@ router.put("/:id", EventoController.update);
  *   delete:
  *     summary: Deletar um evento
  *     tags: [Eventos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Evento removido
+ *       404:
+ *         description: Evento não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.delete("/:id", EventoController.destroy);
 

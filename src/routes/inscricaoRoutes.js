@@ -71,7 +71,11 @@ router.get("/", InscricaoController.index);
  *       200:
  *         description: Lista de inscrições do evento
  *       404:
- *         description: Evento não encontrado
+*         description: Evento não encontrado
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
  */
 router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
 
@@ -96,7 +100,11 @@ router.get("/evento/:eventoId", InscricaoController.listarPorEvento);
  *             schema:
  *               $ref: '#/components/schemas/Inscricao'
  *       404:
- *         description: Inscrição não encontrada
+*         description: Inscrição não encontrada
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
  */
 router.get("/:id", InscricaoController.obterDetalhes);
 
@@ -127,9 +135,17 @@ router.get("/:id", InscricaoController.obterDetalhes);
  *       201:
  *         description: Inscrição criada com sucesso
  *       400:
- *         description: Dados inválidos
- *       409:
- *         description: Inscrição duplicada
+*         description: Dados inválidos
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
+*       409:
+*         description: Inscrição duplicada
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
  */
 router.post("/", InscricaoController.store);
 
@@ -150,7 +166,11 @@ router.post("/", InscricaoController.store);
  *       200:
  *         description: Inscrição cancelada
  *       404:
- *         description: Inscrição não encontrada
+*         description: Inscrição não encontrada
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
  */
 router.patch("/:id/cancelar", InscricaoController.cancelar);
 

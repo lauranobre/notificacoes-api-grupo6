@@ -5,6 +5,22 @@ const { Evento, Participante, Inscricao } = require('../models');
 // A biblioteca que eu instalei via npm
 const { create } = require('xmlbuilder2');
 
+/**
+ * @swagger
+ * /exportar/eventos/xml:
+ *   get:
+ *     summary: Exporta todos os eventos em formato XML
+ *     tags: [Exportação]
+ *     responses:
+ *       200:
+ *         description: Arquivo XML gerado com sucesso
+ *       500:
+*         description: Erro ao exportar eventos
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
+ */
 router.get('/eventos/xml', async (req, res, next) => { 
     try {
         const eventos = await Evento.findAll({ order: [['data', 'ASC']] });
@@ -32,11 +48,26 @@ router.get('/eventos/xml', async (req, res, next) => {
     }
 });
 
+/**
+ * @swagger
+ * /exportar/eventos/json:
+ *   get:
+ *     summary: Exporta todos os eventos em formato JSON
+ *     tags: [Exportação]
+ *     responses:
+ *       200:
+ *         description: Arquivo JSON gerado com sucesso
+ *       500:
+*         description: Erro ao exportar eventos
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
+ */
 router.get('/eventos/json', async (req, res, next) => {
     try {
         const eventos = await Evento.findAll({ order: [['data', 'ASC']], raw: true });
         
-        // Define cabeçalhos para o navegador baixar o arquivo em vez de apenas exibir
         res.set('Content-Type', 'application/json');
         res.set('Content-Disposition', 'attachment; filename="eventos.json"');
         res.json(eventos);
@@ -45,12 +76,8 @@ router.get('/eventos/json', async (req, res, next) => {
     }
 });
 
-/**
- * DESAFIO: Exportar Inscrições com Detalhes (Evento e Participante)
- */
 router.get('/inscricoes/xml', async (req, res, next) => {
     try {
-        // Buscamos as inscrições trazendo os dados relacionados (JOIN)
         const inscricoes = await Inscricao.findAll({
             include: [
                 { model: Evento, as: 'evento' },
@@ -65,14 +92,12 @@ router.get('/inscricoes/xml', async (req, res, next) => {
             xml.ele('inscricao')
                 .ele('id').txt(String(insc.id)).up()
                 .ele('status').txt(insc.status).up()
-                // Pegamos o nome do evento que veio pelo include
                 .ele('evento').txt(insc.evento ? insc.evento.nome : 'N/A').up()
-                // Abrimos uma tag aninhada para o participante
                 .ele('participante')
                     .ele('nome').txt(insc.participante ? insc.participante.nome : 'N/A').up()
                     .ele('email').txt(insc.participante ? insc.participante.email : 'N/A').up()
-                .up() // Fecha <participante>
-            .up(); // Fecha <inscricao>
+                .up()
+            .up();
         });
 
         const xmlString = xml.end({ prettyPrint: true });
@@ -83,7 +108,26 @@ router.get('/inscricoes/xml', async (req, res, next) => {
     }
 });
 
-// Aula 18 - Parte 3:
+/**
+ * @swagger
+ * /exportar/relatorio/inscricoes:
+ *   get:
+ *     summary: Gera relatório completo de inscrições por evento
+ *     tags: [Exportação]
+ *     responses:
+ *       200:
+ *         description: Relatório gerado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       500:
+*         description: Erro ao gerar relatório
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Erro'
+ */
 router.get('/relatorio/inscricoes', async (req, res, next) => {
   try {
     const eventos = await Evento.findAll({
@@ -99,7 +143,6 @@ router.get('/relatorio/inscricoes', async (req, res, next) => {
       order: [['data', 'ASC']],
     });
 
-    //Formatar o relatório:
     const relatorio = eventos.map(evento => ({
       evento: evento.nome,
       data: evento.data,
@@ -125,42 +168,4 @@ router.get('/relatorio/inscricoes', async (req, res, next) => {
   }
 });
 
-//Desafio Aula 18:
-router.get('/relatorio/inscricoes/csv', async (req, res, next) => {
-  try {
-    const inscricoes = await Inscricao.findAll({
-      include: [
-        { model: Evento, as: 'evento', attributes: ['nome', 'data'] },
-        { model: Participante, as: 'participante', attributes: ['nome', 'email'] },
-      ],
-
-      raw: true,
-      nest: true,
-
-    });
-
-    let csv = 'ID,Evento,Data Evento,Participante,Email,Status,Data Inscricao\n';
-    inscricoes.forEach(i => {
-        csv += `${i.id},${i.evento.nome},${i.evento.data},${i.participante.nome},${i.participante.email},${i.status},${i.dataInscricao}\n`;
-    });
-
-    res.set('Content-Type', 'text/csv');
-    res.set('Content-Disposition', 'attachment; filename="inscricoes.csv"');
-
-    res.send(csv);
-
-  } catch (erro) {
-    next(erro);
-
-  }
-
-});
-
-
 module.exports = router;
-
-
-
-//Teste no insominia:
-// GET http://localhost:3000/exportar/eventos/xml
-//GET http://localhost:3000/exportar/inscricoes/xml

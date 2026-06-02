@@ -1,20 +1,20 @@
 // src/services/NotificacaoService.js
 const { Notificacao, Inscricao, Evento, Participante } = require('../models');
 const EmailService = require('./EmailService');
-const { NotFoundError, ValidationError } = require('../errors/AppError');
 
-/**
- * Lista todas as notificações aplicando filtros por tipo e status de envio
- */
+// CORREÇÃO 1: Removido o 'ValidationError' 
+const { NotFoundError } = require('../errors/AppError');
+
+
 async function listarTodas(filtros = {}) {
   const where = {};
 
-  // Filtrar por tipo (confirmacao, lembrete)
+  
   if (filtros.tipo) {
     where.tipo = filtros.tipo;
   }
 
-  // Filtrar por status de envio
+ 
   if (filtros.enviada !== undefined) {
     where.enviada = filtros.enviada === 'true';
   }
@@ -37,9 +37,7 @@ async function listarTodas(filtros = {}) {
   return notificacoes;
 }
 
-/**
- * Busca uma notificação pelo ID (incluindo relacionamentos)
- */
+
 async function buscarPorId(id) {
   const notificacao = await Notificacao.findByPk(id, {
     include: [
@@ -58,13 +56,11 @@ async function buscarPorId(id) {
   return notificacao;
 }
 
-/**
- * Reenvia uma notificação que falhou ou precisa ser reenviada
- */
+
 async function reenviar(id) {
   const notificacao = await buscarPorId(id);
 
-  // Regra opcional: você pode validar se já foi enviada, mas o PDF diz que é útil para testes
+  
   const html = notificacao.conteudo;
   
   const resultado = await EmailService.enviar(
@@ -73,10 +69,11 @@ async function reenviar(id) {
     html
   );
 
-  // Atualizar registro no banco
+  
   await notificacao.update({
     enviada: true,
-    data_envio: new Date(),
+    // CORREÇÃO 2: Alterado de 'data_envio' para 'dataEnvio' 
+    dataEnvio: new Date(),
   });
 
   return {
@@ -85,9 +82,7 @@ async function reenviar(id) {
   };
 }
 
-/**
- * Obtém estatísticas quantitativas das notificações para o dashboard
- */
+
 async function obterEstatisticas() {
   const total = await Notificacao.count();
   const enviadas = await Notificacao.count({ where: { enviada: true } });

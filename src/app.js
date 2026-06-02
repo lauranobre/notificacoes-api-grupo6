@@ -33,7 +33,6 @@ app.use('/notificacoes', notificacaoRoutes);
 app.use("/eventos", eventoRoutes);
 app.use("/participantes", participanteRoutes);
 app.use("/inscricoes", inscricaoRoutes);
-
 app.use('/exportar', exportRoutes);
 
 // Rota raiz

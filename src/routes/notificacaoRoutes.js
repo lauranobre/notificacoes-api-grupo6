@@ -16,13 +16,13 @@ const EmailService = require('../services/EmailService');
  *         tipo:
  *           type: string
  *           enum: [confirmacao, lembrete]
- *         destinatario_email:
+ *         destinatarioEmail:
  *           type: string
  *         assunto:
  *           type: string
  *         enviada:
  *           type: boolean
- *         data_envio:
+ *         dataEnvio:
  *           type: string
  *           format: date-time
  */
@@ -100,6 +100,10 @@ router.get('/estatisticas', async (req, res, next) => {
  *         description: Notificação encontrada
  *       404:
  *         description: Notificação não encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.get('/:id', async (req, res, next) => {
   try {
@@ -131,6 +135,10 @@ router.get('/:id', async (req, res, next) => {
  *         description: Notificação reenviada
  *       404:
  *         description: Notificação não encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.post('/:id/reenviar', async (req, res, next) => {
   try {
@@ -176,4 +184,4 @@ router.post('/teste-email', async (req, res, next) => {
   }
 });
 
-module.exports = router;1
+module.exports = router;

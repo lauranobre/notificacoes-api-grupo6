@@ -68,6 +68,10 @@ router.get("/", ParticipanteController.index);
  *               $ref: '#/components/schemas/Participante'
  *       404:
  *         description: Participante não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.get("/:id", ParticipanteController.show);
 
@@ -92,15 +96,23 @@ router.get("/:id", ParticipanteController.show);
  *               email:
  *                 type: string
  *             example:
- *               nome: "Ana Silva"
- *               email: "ana@email.com"
+ *               nome: Ana Silva
+ *               email: ana@email.com
  *     responses:
  *       201:
  *         description: Participante criado com sucesso
  *       400:
  *         description: Dados inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  *       409:
  *         description: E-mail já cadastrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.post("/", ParticipanteController.store);
 
@@ -129,17 +141,29 @@ router.post("/", ParticipanteController.store);
  *               email:
  *                 type: string
  *             example:
- *               nome: "Ana Silva"
- *               email: "ana@email.com"
+ *               nome: Ana Silva
+ *               email: ana@email.com
  *     responses:
  *       200:
  *         description: Participante atualizado
  *       400:
  *         description: Dados inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  *       404:
  *         description: Participante não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  *       409:
  *         description: E-mail já cadastrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.put("/:id", ParticipanteController.update);
 
@@ -161,6 +185,10 @@ router.put("/:id", ParticipanteController.update);
  *         description: Participante deletado
  *       404:
  *         description: Participante não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Erro'
  */
 router.delete("/:id", ParticipanteController.destroy);
 
