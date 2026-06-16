@@ -1,6 +1,6 @@
 # 🔔 Notificações API
 
-API REST para o módulo de notificações por e-mail de uma plataforma de gerenciamento de eventos
+API REST para o módulo de notificações por e-mail de uma plataforma de gerenciamento de eventos.
 
 ![Node.js](https://img.shields.io/badge/Node.js-24+-green)
 ![Express](https://img.shields.io/badge/Express-4.x-blue)
@@ -8,26 +8,24 @@ API REST para o módulo de notificações por e-mail de uma plataforma de gerenc
 ![Deploy](https://img.shields.io/badge/Deploy-Servidor%20SENAI-blueviolet)
 
 **🌐 URL de Produção:** [10.137.146.206]
-**📚 Documentação:** [localhost:3000]/api-docs
+**📚 Documentação:** [http://10.137.146.206:3000/api-docs](http://10.137.146.206:3000/api-docs)
 
 ---
 
 ## 📋 Sobre o Projeto
 
-Sistema de notificações por e-mail para uma plataforma de eventos.
-Quando um participante se inscreve em um evento, recebe automaticamente
-um e-mail de confirmação. O sistema também envia notificações de cancelamento.
+Sistema de notificações por e-mail para uma plataforma de eventos. Quando um participante se inscreve em um evento, recebe automaticamente um e-mail de confirmação. O sistema também gerencia cancelamentos e envia as notificações correspondentes.
 
 **Desenvolvido como projeto da SA2** — SENAI "Santo Paschoal Crepaldi"
-Curso: Técnico em Desenvolvimento de Sistemas
-UCs: Programação Back-End + Projetos de Software
+**Curso:** Técnico em Desenvolvimento de Sistemas
+**UCs:** Programação Back-End + Projetos de Software
 
-### Equipe
+### 👥 Equipe
 
-- [Laura] — [GitHub](https://github.com/lauranobre)
-- [Letícia] — [GitHub](https://github.com/LeBertonzini)
-- [Luiza] — [GitHub](https://github.com/luizastecca)
-- [Ibide] — [GitHub](https://github.com/Viibide08)
+- **Laura** — [GitHub](https://github.com/lauranobre)
+- **Letícia** — [GitHub](https://github.com/LeBertonzini)
+- **Luiza** — [GitHub](https://github.com/luizastecca)
+- **Ibide** — [GitHub](https://github.com/Viibide08)
 
 ---
 
@@ -41,172 +39,136 @@ UCs: Programação Back-End + Projetos de Software
 
 ### Instalação
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/USUARIO/notificacoes-api-grupoX.git
-   cd notificacoes-api-grupoX
-   ```
-````
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/lauranobre/notificacoes-api-grupo6.git
+    cd notificacoes-api-grupo6
+    ```
 
-2. Instale as dependências:
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-   ```bash
-   npm install
-   ```
+3.  **Configure o ambiente:**
+    ```bash
+    cp .env.example .env
+    # Edite o arquivo .env com suas credenciais do banco de dados
+    ```
 
-3. Configure o ambiente:
+4.  **Crie o banco e execute as migrations:**
+    ```bash
+    npm run db:migrate
+    npm run db:seed
+    ```
 
-   ```bash
-   cp .env.example .env
-   # Edite o .env com suas credenciais do banco de dados
-   ```
+5.  **Inicie o servidor:**
+    ```bash
+    npm run dev
+    ```
 
-4. Crie o banco e execute as migrations:
-
-   ```bash
-   npm run db:migrate
-   npm run db:seed
-   ```
-
-5. Inicie o servidor:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Acesse:
-   - API: http://localhost:3000
-   - Swagger: http://localhost:3000/api-docs
+6.  **Acesse:**
+    - API: [http://localhost:3000](http://localhost:3000)
+    - Swagger: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 ---
 
 ## 📚 Rotas da API
 
-### Eventos
+### 📅 Eventos
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| GET | `/eventos` | Listar todos os eventos (Cache 30s) |
+| GET | `/eventos/futuros` | Listar eventos que ainda não ocorreram |
+| GET | `/eventos/:id` | Detalhes de um evento específico |
+| POST | `/eventos` | Criar novo evento |
+| POST | `/eventos/:id/banner` | Upload de banner para o evento |
+| PUT | `/eventos/:id` | Atualizar dados do evento |
+| DELETE | `/eventos/:id` | Remover evento |
 
-[tabela com rotas]
+### 👥 Participantes
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| GET | `/participantes` | Listar todos os participantes |
+| GET | `/participantes/:id` | Detalhes do participante |
+| POST | `/participantes` | Cadastrar novo participante |
+| PUT | `/participantes/:id` | Atualizar dados do participante |
+| DELETE | `/participantes/:id` | Remover participante |
 
-### Participantes
+### 📝 Inscrições
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| GET | `/inscricoes` | Listar todas as inscrições |
+| GET | `/inscricoes/evento/:eventoId` | Listar inscritos por evento |
+| GET | `/inscricoes/:id` | Detalhes de uma inscrição |
+| POST | `/inscricoes` | Realizar nova inscrição |
+| PATCH | `/inscricoes/:id/cancelar` | Cancelar uma inscrição |
 
-[tabela com rotas]
+### 🔔 Notificações
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| GET | `/notificacoes` | Listar histórico de notificações |
+| GET | `/notificacoes/estatisticas` | Dashboard de envios e métricas |
+| GET | `/notificacoes/:id` | Detalhes de uma notificação |
+| POST | `/notificacoes/:id/reenviar` | Reenviar notificação específica |
+| POST | `/notificacoes/teste-email` | Enviar e-mail de teste |
 
-### Inscrições
-
-[tabela com rotas]
-
-### Notificações
-
-[tabela com rotas]
-
-### Exportação
-
-[tabela com rotas]
+### 📤 Exportação
+| Método | Rota | Descrição |
+| :--- | :--- | :--- |
+| GET | `/exportar/eventos/xml` | Exportar eventos em formato XML |
+| GET | `/exportar/eventos/json` | Download de eventos em JSON |
+| GET | `/exportar/relatorio/inscricoes` | Relatório completo de inscrições |
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias Utilizadas
 
-| Tecnologia           | Finalidade                     |
-| -------------------- | ------------------------------ |
-| Node.js              | Runtime                        |
-| Express.js           | Framework web                  |
-| MariaDB              | Banco de dados                 |
-| Sequelize            | ORM                            |
-| Nodemailer + MailPit | Envio de e-mails (teste local) |
-| Swagger              | Documentação                   |
-| Multer               | Upload de arquivos             |
+| Tecnologia | Finalidade |
+| :--- | :--- |
+| **Node.js** | Runtime JavaScript |
+| **Express.js** | Framework web para a API |
+| **MariaDB / MySQL** | Banco de dados relacional |
+| **Sequelize** | ORM para manipulação do banco |
+| **Nodemailer** | Serviço de envio de e-mails |
+| **MailPit** | Captura de e-mails em ambiente de dev |
+| **Swagger** | Documentação interativa da API |
+| **Multer** | Middleware para upload de arquivos |
 
 ---
-
-
-## ️ Tecnologias
-
-* Node.js
-* Express.js
-* Swagger (swagger-jsdoc + swagger-ui-express)
-* Dotenv (variáveis de ambiente)
-* Nodemon (desenvolvimento)
-* CORS
-* Nodemailer
-* MailPit
-* Sequelize
-* MySQL
 
 ## 📁 Estrutura do Projeto
 
 ```bash
 src/
-├── config/ → Configurações de banco, upload e cache
-├── controllers/ → Recebe requisições, retorna respostas
-├── database/ → Migrations e Seeders (Banco de dados)
-├── services/ → Lógica de negócio e validações
-├── models/ → Modelos Sequelize (Eventos, Participantes, Inscrições)
-├── routes/ → Mapeamento de URLs
-├── middlewares/ → Funções intermediárias (log, erros, cache)
-├── errors/ → Classes de erro customizadas
-├── helpers/ → Funções auxiliares (validação, etc.)
-├── swagger.js → Configuração da documentação
-├── app.js → Configuração do Express
-└── server.js → Inicialização do servidor
+├── config/        # Configurações de banco, upload e cache
+├── controllers/   # Lógica de controle das rotas
+├── database/      # Migrations e Seeders
+├── events/        # Implementação do Padrão Observer
+├── services/      # Lógica de negócio (E-mail, etc.)
+├── models/        # Modelos Sequelize
+├── routes/        # Definição dos endpoints
+├── middlewares/   # Filtros e interceptadores (Log, Erros)
+├── templates/     # Templates de e-mail (HTML)
+├── app.js         # Configuração do Express
+└── server.js      # Inicialização do servidor
 ```
 
-## 🔧 Scripts
+---
 
-| Comando                   | Descrição                            |
-| ------------------------- | ------------------------------------ |
-| `npm start`               | Inicia o servidor (produção)         |
-| `npm run dev`             | Inicia com Nodemon (desenvolvimento) |
-| `npm run db:migrate`      | Executa migrations pendentes         |
-| `npm run db:migrate:undo` | Desfaz última migration              |
-| `npm run db:seed`         | Insere dados iniciais                |
-| `npm run db:reset`        | Recria banco completo                |
+## 📧 Sistema de Notificações
 
-## 🗄️ Banco de Dados
+A API utiliza o **Padrão Observer** para disparar e-mails automaticamente em eventos chave do sistema:
 
-* **SGBD:** MySQL
-* **ORM:** Sequelize
-* **Tabelas:** eventos, participantes, inscricoes, notificacoes
+- ✅ **Confirmação de Inscrição:** Enviada assim que o registro é concluído.
+- ❌ **Cancelamento de Inscrição:** Notificação de confirmação do cancelamento.
+- 📊 **Estatísticas:** Monitoramento em tempo real dos envios realizados.
+
+Em ambiente de desenvolvimento, os e-mails podem ser visualizados através do **MailPit**:
+`http://localhost:8025`
 
 ---
 
-# 🔔 Notificações
+## 📄 Licença
 
-| Método | Rota                         | Descrição                                    |
-| ------ | ---------------------------- | -------------------------------------------- |
-| GET    | `/notificacoes`              | Listar notificações (filtros: tipo, enviada) |
-| GET    | `/notificacoes/estatisticas` | Dashboard de envios                          |
-| GET    | `/notificacoes/:id`          | Detalhes da notificação                      |
-| POST   | `/notificacoes/:id/reenviar` | Reenviar notificação                         |
-| POST   | `/notificacoes/teste-email`  | Enviar e-mail de teste                       |
-
----
-
-# 📤 Exportação
-
-| Método | Rota                             | Descrição                  |
-| ------ | -------------------------------- | -------------------------- |
-| GET    | `/exportar/eventos/xml`          | Eventos em XML             |
-| GET    | `/exportar/eventos/json`         | Eventos em JSON (download) |
-| GET    | `/exportar/relatorio/inscricoes` | Relatório de inscrições    |
-
----
-
-# 📧 Sistema de Notificações
-
-A API envia e-mails automaticamente utilizando o **Padrão Observer**.
-
-## Funcionalidades
-
-* Confirmação de inscrição enviada automaticamente
-* Cancelamento de inscrição enviado automaticamente
-* Histórico de notificações salvo no banco
-* Estatísticas de envio
-* Reenvio manual de notificações
-* Templates profissionais de e-mail
-
-Durante o desenvolvimento, os e-mails são capturados pelo **MailPit** (servidor SMTP local).
-
-Visualize os e-mails em:
-
-```bash
-http://MAILPIT_IP:8025
+Projeto Acadêmico — **SENAI 2026**
