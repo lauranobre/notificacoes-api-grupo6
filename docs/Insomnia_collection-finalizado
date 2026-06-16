@@ -1,0 +1,2774 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v12.6.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 109.733,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/notificacoes/teste-email",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"email\": \"teste@exemplo.com\",\n  \"assunto\": \"Teste de Conexão API\",\n  \"mensagem\": \"Se você recebeu isso, o sistema de notificações está operando corretamente!\"\n}\n"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "83"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"53-HGrB2EYXYOMTkLLxDCiXlUXnKvk\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:16:27 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 83,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"mensagem\":\"E-mail de teste enviado!\",\"visualizarEm\":\"http://10.137.146.106:8025\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 109.733,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "post / notificacoes/teste-email"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 33.404,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/notificacoes/estatisticas",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "107"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"6b-rFPb6CAUMl/1+Iv06eXtrQym4a4\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:12:51 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 107,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"total\":2,\"enviadas\":2,\"pendentes\":0,\"taxaEnvio\":\"100%\",\"porTipo\":[{\"tipo\":\"confirmacao\",\"quantidade\":2}]}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 33.404,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "get / notificacoes/estatisticas"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 56.355000000000004,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/participantes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Usuário Teste\",\n  \"email\": \"teste@exemplo.com\"\n}\n"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "138"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"8a-ymzUU/iPRIBNls5MU6jp54wq58M\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:09:48 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 138,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":7,\"nome\":\"Usuário Teste\",\"email\":\"teste@exemplo.com\",\"updatedAt\":\"2026-06-16T11:09:48.886Z\",\"createdAt\":\"2026-06-16T11:09:48.886Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 56.355000000000004,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "post / participante"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 86.533,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 5,\n  \"participanteId\": 1\n}\n"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "185"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"b9-E3gdHGI/lkWMHiZQallDKkC3p6M\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:11:27 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 185,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dataInscricao\":\"2026-06-16T11:11:27.799Z\",\"id\":6,\"evento_id\":5,\"participante_id\":1,\"status\":\"confirmada\",\"updatedAt\":\"2026-06-16T11:11:27.799Z\",\"createdAt\":\"2026-06-16T11:11:27.799Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 86.533,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "post / inscrições"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 11.462,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/api-docs",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "3106"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"c22-H8FH9nKD8DeX/nvIRrte6ZjP2a4\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:08:03 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 3106,
+						"mimeType": "text/html; charset=utf-8",
+						"text": "\n<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  \n  <title>Swagger UI</title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n  <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" /><link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n  <style>\n    html\n    {\n      box-sizing: border-box;\n      overflow: -moz-scrollbars-vertical;\n      overflow-y: scroll;\n    }\n    *,\n    *:before,\n    *:after\n    {\n      box-sizing: inherit;\n    }\n\n    body {\n      margin:0;\n      background: #fafafa;\n    }\n  </style>\n</head>\n\n<body>\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"position:absolute;width:0;height:0\">\n  <defs>\n    <symbol viewBox=\"0 0 20 20\" id=\"unlocked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z\"></path>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"locked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"close\">\n      <path d=\"M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow\">\n      <path d=\"M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow-down\">\n      <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"/>\n    </symbol>\n\n\n    <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">\n      <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 24 24\" id=\"expand\">\n      <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"/>\n    </symbol>\n\n  </defs>\n</svg>\n\n<div id=\"swagger-ui\"></div>\n\n<script src=\"./swagger-ui-bundle.js\"> </script>\n<script src=\"./swagger-ui-standalone-preset.js\"> </script>\n<script src=\"./swagger-ui-init.js\"> </script>\n\n\n\n<style>\n  .swagger-ui .topbar .download-url-wrapper { display: none } undefined\n</style>\n</body>\n\n</html>\n"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 11.462,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "get / api-docs"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 60.720000000000006,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop de Node.js SENAI\",\n  \"descricao\": \"Uma aula prática sobre APIs REST e Notificações.\",\n  \"data\": \"2026-07-20\",\n  \"local\": \"Auditório Principal\"\n}\n"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "252"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"fc-EAqDZmpp8qn8RWTmM2QuIiy0UeA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:07:42 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 252,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":5,\"nome\":\"Workshop de Node.js SENAI\",\"descricao\":\"Uma aula prática sobre APIs REST e Notificações.\",\"data\":\"2026-07-20T00:00:00.000Z\",\"local\":\"Auditório Principal\",\"updatedAt\":\"2026-06-16T11:07:42.322Z\",\"createdAt\":\"2026-06-16T11:07:42.322Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 60.720000000000006,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "post / eventos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 111.8,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "607"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"25f-FlSeyzCkkwjWTvAL7GMislA++/w\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:06:22 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 607,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dados\":[{\"id\":2,\"nome\":\"Hackathon SENAI 2025\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1779801504606-332027015.jpg\",\"createdAt\":\"2026-05-26T12:46:55.000Z\",\"updatedAt\":\"2026-05-26T13:18:24.000Z\"},{\"id\":3,\"nome\":\"Palestra sobre APIs REST\",\"descricao\":\"Como construir APIs profissionais\",\"data\":\"2025-10-10T14:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":50,\"banner\":null,\"createdAt\":\"2026-05-26T12:46:55.000Z\",\"updatedAt\":\"2026-05-26T12:46:55.000Z\"}],\"total\":2,\"pagina\":1,\"porPagina\":10,\"totalPaginas\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 111.8,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "get / eventos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 11.598,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.6.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "171"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"ab-GtchGKq+IPx+6lP/8xoBxiQ/yYY\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 16 Jun 2026 11:05:45 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 171,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"mensagem\":\"API de Notificações\",\"versao\":\"1.0.0\",\"documentacao\":\"/api-docs\",\"rotas\":{\"eventos\":\"/eventos\",\"participantes\":\"/participantes\",\"inscricoes\":\"/inscricoes\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 11.598,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "get /"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 2.588,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1326"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"52e-9N10F3pK8A9MOMSDPg0DHhVbe28\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:25:45 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1326,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dados\":[{\"id\":2,\"nome\":\"Workshop Atualizado\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1778583081354-188271843.png\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-05-12T10:51:21.000Z\"},{\"id\":3,\"nome\":\"Palestra sobre APIs REST\",\"descricao\":\"Como construir APIs profissionais\",\"data\":\"2025-10-10T14:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":50,\"banner\":null,\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"},{\"id\":6,\"nome\":\"Workshop de Backend ATUALIZADO\",\"descricao\":\"Node.js + Sequelize\",\"data\":\"2025-12-11T19:00:00.000Z\",\"local\":\"Online\",\"capacidade\":100,\"banner\":null,\"createdAt\":\"2026-04-30T16:42:58.000Z\",\"updatedAt\":\"2026-04-30T16:44:37.000Z\"},{\"id\":7,\"nome\":\"Feira de Ciências\",\"descricao\":null,\"data\":\"2026-05-07T00:00:00.000Z\",\"local\":null,\"capacidade\":null,\"banner\":null,\"createdAt\":\"2026-05-07T17:14:25.000Z\",\"updatedAt\":\"2026-05-07T17:14:25.000Z\"},{\"id\":8,\"nome\":\"Workshop de Node.js\",\"descricao\":\"Evento sobre APIs com Express e Sequelize\",\"data\":\"2026-06-15T00:00:00.000Z\",\"local\":\"Auditório Central\",\"capacidade\":120,\"banner\":null,\"createdAt\":\"2026-05-12T10:47:49.000Z\",\"updatedAt\":\"2026-05-12T10:47:49.000Z\"}],\"total\":5,\"pagina\":1,\"porPagina\":10,\"totalPaginas\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.588,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "cache funciona"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 2.679,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/banana",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 404,
+					"statusText": "Not Found",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "62"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"3e-/p7FRYMG/nA7yA0We4c0bNeRrIQ\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:22:06 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 62,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":\"Rota não encontrada\",\"metodo\":\"GET\",\"url\":\"/banana\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.679,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "rota inválida"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 32.628,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/exportar/eventos/xml",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/xml; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1217"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"4c1-q1FkbKhg8uvoMiYU8q2zW3UCDdI\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:18:38 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1217,
+						"mimeType": "application/xml; charset=utf-8",
+						"text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<eventos>\n  <evento>\n    <id>2</id>\n    <nome>Workshop Atualizado</nome>\n    <descricao>Maratona de programação</descricao>\n    <data>2025-09-20T08:00:00.000Z</data>\n    <local>SENAI - Auditório</local>\n    <capacidade>100</capacidade>\n  </evento>\n  <evento>\n    <id>3</id>\n    <nome>Palestra sobre APIs REST</nome>\n    <descricao>Como construir APIs profissionais</descricao>\n    <data>2025-10-10T14:00:00.000Z</data>\n    <local>SENAI - Sala 5</local>\n    <capacidade>50</capacidade>\n  </evento>\n  <evento>\n    <id>6</id>\n    <nome>Workshop de Backend ATUALIZADO</nome>\n    <descricao>Node.js + Sequelize</descricao>\n    <data>2025-12-11T19:00:00.000Z</data>\n    <local>Online</local>\n    <capacidade>100</capacidade>\n  </evento>\n  <evento>\n    <id>7</id>\n    <nome>Feira de Ciências</nome>\n    <descricao/>\n    <data>2026-05-07T00:00:00.000Z</data>\n    <local/>\n    <capacidade>0</capacidade>\n  </evento>\n  <evento>\n    <id>8</id>\n    <nome>Workshop de Node.js</nome>\n    <descricao>Evento sobre APIs com Express e Sequelize</descricao>\n    <data>2026-06-15T00:00:00.000Z</data>\n    <local>Auditório Central</local>\n    <capacidade>120</capacidade>\n  </evento>\n</eventos>"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 32.628,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna xml válido"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 3.4949999999999997,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/exportar/eventos/json",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Disposition",
+							"value": "attachment; filename=\"eventos.json\""
+						},
+						{
+							"name": "Content-Length",
+							"value": "1263"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"4ef-rWjvrjDR9AlKu8urkwpiRYvIXiM\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:18:41 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1263,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":2,\"nome\":\"Workshop Atualizado\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1778583081354-188271843.png\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-05-12T10:51:21.000Z\"},{\"id\":3,\"nome\":\"Palestra sobre APIs REST\",\"descricao\":\"Como construir APIs profissionais\",\"data\":\"2025-10-10T14:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":50,\"banner\":null,\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"},{\"id\":6,\"nome\":\"Workshop de Backend ATUALIZADO\",\"descricao\":\"Node.js + Sequelize\",\"data\":\"2025-12-11T19:00:00.000Z\",\"local\":\"Online\",\"capacidade\":100,\"banner\":null,\"createdAt\":\"2026-04-30T16:42:58.000Z\",\"updatedAt\":\"2026-04-30T16:44:37.000Z\"},{\"id\":7,\"nome\":\"Feira de Ciências\",\"descricao\":null,\"data\":\"2026-05-07T00:00:00.000Z\",\"local\":null,\"capacidade\":null,\"banner\":null,\"createdAt\":\"2026-05-07T17:14:25.000Z\",\"updatedAt\":\"2026-05-07T17:14:25.000Z\"},{\"id\":8,\"nome\":\"Workshop de Node.js\",\"descricao\":\"Evento sobre APIs com Express e Sequelize\",\"data\":\"2026-06-15T00:00:00.000Z\",\"local\":\"Auditório Central\",\"capacidade\":120,\"banner\":null,\"createdAt\":\"2026-05-12T10:47:49.000Z\",\"updatedAt\":\"2026-05-12T10:47:49.000Z\"}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.4949999999999997,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna relatório formatado"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 3.328,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/exportar/eventos/xml",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/xml; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1217"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"4c1-q1FkbKhg8uvoMiYU8q2zW3UCDdI\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:18:44 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1217,
+						"mimeType": "application/xml; charset=utf-8",
+						"text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<eventos>\n  <evento>\n    <id>2</id>\n    <nome>Workshop Atualizado</nome>\n    <descricao>Maratona de programação</descricao>\n    <data>2025-09-20T08:00:00.000Z</data>\n    <local>SENAI - Auditório</local>\n    <capacidade>100</capacidade>\n  </evento>\n  <evento>\n    <id>3</id>\n    <nome>Palestra sobre APIs REST</nome>\n    <descricao>Como construir APIs profissionais</descricao>\n    <data>2025-10-10T14:00:00.000Z</data>\n    <local>SENAI - Sala 5</local>\n    <capacidade>50</capacidade>\n  </evento>\n  <evento>\n    <id>6</id>\n    <nome>Workshop de Backend ATUALIZADO</nome>\n    <descricao>Node.js + Sequelize</descricao>\n    <data>2025-12-11T19:00:00.000Z</data>\n    <local>Online</local>\n    <capacidade>100</capacidade>\n  </evento>\n  <evento>\n    <id>7</id>\n    <nome>Feira de Ciências</nome>\n    <descricao/>\n    <data>2026-05-07T00:00:00.000Z</data>\n    <local/>\n    <capacidade>0</capacidade>\n  </evento>\n  <evento>\n    <id>8</id>\n    <nome>Workshop de Node.js</nome>\n    <descricao>Evento sobre APIs com Express e Sequelize</descricao>\n    <data>2026-06-15T00:00:00.000Z</data>\n    <local>Auditório Central</local>\n    <capacidade>120</capacidade>\n  </evento>\n</eventos>"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.328,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna json para download"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 12.454,
+				"request": {
+					"method": "PATCH",
+					"url": "http://localhost:3000/inscricoes/4/cancelar",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "184"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"b8-UADRq3Ybz1PWQyCwt5s9QFogMZA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:14:46 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 184,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":4,\"dataInscricao\":\"2026-04-30T16:46:27.000Z\",\"status\":\"cancelada\",\"createdAt\":\"2026-04-30T16:46:27.000Z\",\"updatedAt\":\"2026-05-12T11:14:46.110Z\",\"evento_id\":2,\"participante_id\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 12.454,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "status muda para cancelada"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 8.644,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/inscricoes/evento/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "511"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1ff-cqwnXBc5zxcfRmU6A3N3FKeHAVs\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:13:43 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 511,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":3,\"dataInscricao\":\"2026-04-28T13:19:17.000Z\",\"status\":\"cancelada\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-30T16:50:05.000Z\",\"evento_id\":2,\"participante_id\":3,\"participante\":{\"id\":3,\"nome\":\"Maria Santos\",\"email\":\"maria@email.com\"}},{\"id\":4,\"dataInscricao\":\"2026-04-30T16:46:27.000Z\",\"status\":\"confirmada\",\"createdAt\":\"2026-04-30T16:46:27.000Z\",\"updatedAt\":\"2026-04-30T16:46:27.000Z\",\"evento_id\":2,\"participante_id\":1,\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 8.644,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "filtra por evento"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 12.595,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1018"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"3fa-NbjwoaqK3cOd8Mrah+A2SuJciCs\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:13:14 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1018,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":5,\"dataInscricao\":\"2026-05-12T11:09:44.000Z\",\"status\":\"confirmada\",\"createdAt\":\"2026-05-12T11:09:44.000Z\",\"updatedAt\":\"2026-05-12T11:09:44.000Z\",\"evento_id\":6,\"participante_id\":1,\"evento\":{\"id\":6,\"nome\":\"Workshop de Backend ATUALIZADO\",\"data\":\"2025-12-11T19:00:00.000Z\"},\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}},{\"id\":4,\"dataInscricao\":\"2026-04-30T16:46:27.000Z\",\"status\":\"confirmada\",\"createdAt\":\"2026-04-30T16:46:27.000Z\",\"updatedAt\":\"2026-04-30T16:46:27.000Z\",\"evento_id\":2,\"participante_id\":1,\"evento\":{\"id\":2,\"nome\":\"Workshop Atualizado\",\"data\":\"2025-09-20T08:00:00.000Z\"},\"participante\":{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\"}},{\"id\":3,\"dataInscricao\":\"2026-04-28T13:19:17.000Z\",\"status\":\"cancelada\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-30T16:50:05.000Z\",\"evento_id\":2,\"participante_id\":3,\"evento\":{\"id\":2,\"nome\":\"Workshop Atualizado\",\"data\":\"2025-09-20T08:00:00.000Z\"},\"participante\":{\"id\":3,\"nome\":\"Maria Santos\",\"email\":\"maria@email.com\"}}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 12.595,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "lista com dados de evento e participante"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 18.067,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 6,\n  \"participanteId\": 1\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "185"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"b9-DlKaTj4Yh9aIBQLLDAAhKT3WGco\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:09:44 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 185,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dataInscricao\":\"2026-05-12T11:09:44.875Z\",\"status\":\"confirmada\",\"id\":5,\"evento_id\":6,\"participante_id\":1,\"updatedAt\":\"2026-05-12T11:09:44.876Z\",\"createdAt\":\"2026-05-12T11:09:44.876Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 18.067,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "IDs válidos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 9.022,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 6,\n  \"participanteId\": 1\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "Bad Request",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "499"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1f3-8z0PxcVOWL6TVGTo6uJYfoM++FQ\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:11:59 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 499,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ValidationError\",\"mensagem\":\"Participante já inscrito neste evento\",\"statusCode\":400,\"stack\":\"ValidationError: Participante já inscrito neste evento\\n    at Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\InscricaoService.js:20:25)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\InscricaoController.js:9:31)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 9.022,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "duplicada"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 7.191000000000001,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/inscricoes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"eventoId\": 4,\n  \"participanteId\": 1\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 404,
+					"statusText": "Not Found",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "468"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1d4-kJEFOFM5O6yiKa2Q85nRbmFc16A\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:12:44 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 468,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"NotFoundError\",\"mensagem\":\"Evento não encontrado(a)\",\"statusCode\":404,\"stack\":\"NotFoundError: Evento não encontrado(a)\\n    at Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\InscricaoService.js:9:22)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\InscricaoController.js:9:31)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 7.191000000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "evento inexistente "
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 2.973,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/participantes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Teste\",\n  \"email\": \"abc\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "Bad Request",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "462"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1ce-B0QFlUsJCKu7TvWWnDnseRqfIqg\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 11:00:31 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 462,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ValidationError\",\"mensagem\":\"E-mail inválido\",\"statusCode\":400,\"stack\":\"ValidationError: E-mail inválido\\n    at Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\ParticipanteService.js:33:13)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\ParticipanteController.js:25:18)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 2.973,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "com e-mail inválido"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 12.262,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/participantes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Outra Laura\",\n  \"email\": \"laura@email.com\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 409,
+					"statusText": "Conflict",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1163"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"48b-1ysjEUYxGsXPCcTmLYG0mns3Y1k\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:59:32 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1163,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ConflictError\",\"mensagem\":\"Registro duplicado: email must be unique\",\"statusCode\":409,\"stack\":\"Error\\n    at Query.run (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\dialects\\\\mysql\\\\query.js:52:25)\\n    at D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\sequelize.js:315:28\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async MySQLQueryInterface.insert (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\dialects\\\\abstract\\\\query-interface.js:308:21)\\n    at async model.save (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\model.js:2490:35)\\n    at async Participante.create (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\model.js:1362:12)\\n    at async Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\ParticipanteService.js:27:30)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\ParticipanteController.js:25:18)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 12.262,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "e-mail duplicado"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 36.89,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/participantes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Laura Nobre\",\n  \"email\": \"laura@email.com\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "133"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"85-KO+gqtocNVrPfE9CiQAKbzzGQsc\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:58:36 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 133,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":4,\"nome\":\"Laura Nobre\",\"email\":\"laura@email.com\",\"updatedAt\":\"2026-05-12T10:58:36.615Z\",\"createdAt\":\"2026-05-12T10:58:36.615Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 36.89,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "dados válidos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 18.807000000000002,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/participantes",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "402"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"192-PGButeglJD+uP4h2zFCwmVit4XE\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:57:34 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 402,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "[{\"id\":1,\"nome\":\"Ana Silva\",\"email\":\"ana@email.com\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"},{\"id\":2,\"nome\":\"Carlos Souza\",\"email\":\"carlos@email.com\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"},{\"id\":3,\"nome\":\"Maria Santos\",\"email\":\"maria@email.com\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"}]"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 18.807000000000002,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "lista todos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 3.731,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos/9999",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 404,
+					"statusText": "Not Found",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "469"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1d5-05Q4juLIdqWFO1bHhckRGr39kXY\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:46:54 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 469,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"NotFoundError\",\"mensagem\":\"Evento não encontrado(a)\",\"statusCode\":404,\"stack\":\"NotFoundError: Evento não encontrado(a)\\n    at Object.buscarPorId (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\EventoService.js:60:11)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async show (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\EventoController.js:33:24)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.731,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna 404 formatado"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 5.0600000000000005,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "283"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"11b-KwKbnHHJe/cK7IzPS49PCshE7hk\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:46:49 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 283,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":2,\"nome\":\"Hackathon SENAI 2025\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1778177185441-56354583.jpg\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-05-07T18:06:25.000Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 5.0600000000000005,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna evento com todos os campos"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 6.666,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos?busca=Workshop",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "307"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"133-hIi6dcdDQOCzwbBL5BA7K28Dfso\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:46:44 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 307,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dados\":[{\"id\":6,\"nome\":\"Workshop de Backend ATUALIZADO\",\"descricao\":\"Node.js + Sequelize\",\"data\":\"2025-12-11T19:00:00.000Z\",\"local\":\"Online\",\"capacidade\":100,\"banner\":null,\"createdAt\":\"2026-04-30T16:42:58.000Z\",\"updatedAt\":\"2026-04-30T16:44:37.000Z\"}],\"total\":1,\"pagina\":1,\"porPagina\":10,\"totalPaginas\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 6.666,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "filtra por nome"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 35.877,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1300"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"514-hvGuf60MiMhzNUynxB0y17YHlGA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:46:38 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1300,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dados\":[{\"id\":2,\"nome\":\"Hackathon SENAI 2025\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1778177185441-56354583.jpg\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-05-07T18:06:25.000Z\"},{\"id\":3,\"nome\":\"Palestra sobre APIs REST\",\"descricao\":\"Como construir APIs profissionais\",\"data\":\"2025-10-10T14:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":50,\"banner\":null,\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-04-28T13:19:17.000Z\"},{\"id\":4,\"nome\":\"Meetup de JavaScript\",\"descricao\":\"Encontro mensal de devs JS\",\"data\":\"2025-11-15T19:00:00.000Z\",\"local\":\"Online\",\"capacidade\":200,\"banner\":null,\"createdAt\":\"2026-04-30T15:54:04.000Z\",\"updatedAt\":\"2026-04-30T15:54:04.000Z\"},{\"id\":6,\"nome\":\"Workshop de Backend ATUALIZADO\",\"descricao\":\"Node.js + Sequelize\",\"data\":\"2025-12-11T19:00:00.000Z\",\"local\":\"Online\",\"capacidade\":100,\"banner\":null,\"createdAt\":\"2026-04-30T16:42:58.000Z\",\"updatedAt\":\"2026-04-30T16:44:37.000Z\"},{\"id\":7,\"nome\":\"Feira de Ciências\",\"descricao\":null,\"data\":\"2026-05-07T00:00:00.000Z\",\"local\":null,\"capacidade\":null,\"banner\":null,\"createdAt\":\"2026-05-07T17:14:25.000Z\",\"updatedAt\":\"2026-05-07T17:14:25.000Z\"}],\"total\":5,\"pagina\":1,\"porPagina\":10,\"totalPaginas\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 35.877,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna a lista"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 42.839,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop de Node.js\",\n  \"descricao\": \"Evento sobre APIs com Express e Sequelize\",\n  \"data\": \"2026-06-15\",\n  \"capacidade\": 120,\n  \"local\": \"Auditório Central\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "251"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"fb-50li8Vcb1xA7X6JVshABdwzFvKA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:47:49 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 251,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":8,\"nome\":\"Workshop de Node.js\",\"descricao\":\"Evento sobre APIs com Express e Sequelize\",\"data\":\"2026-06-15T00:00:00.000Z\",\"capacidade\":120,\"local\":\"Auditório Central\",\"updatedAt\":\"2026-05-12T10:47:49.873Z\",\"createdAt\":\"2026-05-12T10:47:49.873Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 42.839,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "retorna com ID e timestamps"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 3.5829999999999997,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"descricao\": \"Evento sem nome\",\n  \"data\": \"2026-06-15\",\n  \"capacidade\": 50,\n  \"local\": \"Sala 2\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "Bad Request",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "470"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1d6-2snMQHUejiy2A8u9BqkzUPHfHzU\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:48:12 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 470,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ValidationError\",\"mensagem\":\"Evento.nome cannot be null\",\"statusCode\":400,\"stack\":\"ValidationError: Evento.nome cannot be null\\n    at Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\EventoService.js:72:13)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\EventoController.js:42:28)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.5829999999999997,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "mensagem de validação"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 15.131,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Evento Inválido\",\n  \"descricao\": \"Teste de validação\",\n  \"data\": \"2026-06-15\",\n  \"capacidade\": -10,\n  \"local\": \"Sala 3\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 400,
+					"statusText": "Bad Request",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "482"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"1e2-GYb+l1ESIWvPDKi5+RemirJ3qeE\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:48:32 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 482,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ValidationError\",\"mensagem\":\"Capacidade deve ser pelo menos 1\",\"statusCode\":400,\"stack\":\"ValidationError: Capacidade deve ser pelo menos 1\\n    at Object.criar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\EventoService.js:72:13)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async store (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\EventoController.js:42:28)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 15.131,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "capacidade negativa"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 16.084999999999997,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:3000/eventos/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop Atualizado\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "282"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"11a-Ut+ANJI+TQi5P2Tge1lfdiReTiI\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:48:46 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 282,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":2,\"nome\":\"Workshop Atualizado\",\"descricao\":\"Maratona de programação\",\"data\":\"2025-09-20T08:00:00.000Z\",\"local\":\"SENAI - Auditório\",\"capacidade\":100,\"banner\":\"/uploads/1778177185441-56354583.jpg\",\"createdAt\":\"2026-04-28T13:19:17.000Z\",\"updatedAt\":\"2026-05-12T10:48:46.186Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 16.084999999999997,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "atualiza dados parcialmente"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 34.829,
+				"request": {
+					"method": "DELETE",
+					"url": "http://localhost:3000/eventos/4",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 204,
+					"statusText": "No Content",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:52:18 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 0,
+						"mimeType": "",
+						"text": ""
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 34.829,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "deleta evento"
+			},
+			{
+				"startedDateTime": "2026-06-16T11:26:22.949Z",
+				"time": 51.707,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos/2/banner",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "multipart/form-data"
+						},
+						{
+							"name": "User-Agent",
+							"value": "insomnia/12.5.0"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "multipart/form-data",
+						"params": [
+							{
+								"name": "banner",
+								"fileName": "C:\\Users\\NB16-2DEV\\OneDrive - SESISENAISP - Escolas\\Imagens\\Capturas de tela\\Captura de tela 2026-05-07 101323.png"
+							}
+						]
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "92"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"5c-LvR/juswL6ln75/YsoysyJcm7MA\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 12 May 2026 10:51:21 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 92,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"mensagem\":\"Banner atualizado com sucesso\",\"banner\":\"/uploads/1778583081354-188271843.png\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 51.707,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "evento com banner"
+			}
+		]
+	}
+}

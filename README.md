@@ -2,19 +2,122 @@
 
 API REST para o módulo de notificações por e-mail de uma plataforma de gerenciamento de eventos
 
+![Node.js](https://img.shields.io/badge/Node.js-24+-green)
+![Express](https://img.shields.io/badge/Express-4.x-blue)
+![MariaDB](https://img.shields.io/badge/MariaDB-11.x-blue)
+![Deploy](https://img.shields.io/badge/Deploy-Servidor%20SENAI-blueviolet)
+
+**🌐 URL de Produção:** [10.137.146.206]
+**📚 Documentação:** [localhost:3000]/api-docs
+
+---
+
 ## 📋 Sobre o Projeto
 
-Este projeto faz parte da Situação de Aprendizagem do curso de Programação Back-End do SENAI.
-O módulo é responsável por enviar notificações (confirmação de inscrição, lembretes)
-para participantes de eventos.
+Sistema de notificações por e-mail para uma plataforma de eventos.
+Quando um participante se inscreve em um evento, recebe automaticamente
+um e-mail de confirmação. O sistema também envia notificações de cancelamento.
 
-## 🚀 Como Rodar
+**Desenvolvido como projeto da SA2** — SENAI "Santo Paschoal Crepaldi"
+Curso: Técnico em Desenvolvimento de Sistemas
+UCs: Programação Back-End + Projetos de Software
+
+### Equipe
+
+- [Laura] — [GitHub](https://github.com/lauranobre)
+- [Letícia] — [GitHub](https://github.com/LeBertonzini)
+- [Luiza] — [GitHub](https://github.com/luizastecca)
+- [Ibide] — [GitHub](https://github.com/Viibide08)
+
+---
+
+## 🚀 Como Rodar Localmente
+
+### Pré-requisitos
+
+- Node.js 24+
+- MySQL 8.0 ou MariaDB 11+
+- Git
+
+### Instalação
 
 1. Clone o repositório:
+   ```bash
+   git clone https://github.com/USUARIO/notificacoes-api-grupoX.git
+   cd notificacoes-api-grupoX
+   ```
+````
 
-```bash
-git clone https://github.com/lauranobre/notificacoes-api.git
-```
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Configure o ambiente:
+
+   ```bash
+   cp .env.example .env
+   # Edite o .env com suas credenciais do banco de dados
+   ```
+
+4. Crie o banco e execute as migrations:
+
+   ```bash
+   npm run db:migrate
+   npm run db:seed
+   ```
+
+5. Inicie o servidor:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Acesse:
+   - API: http://localhost:3000
+   - Swagger: http://localhost:3000/api-docs
+
+---
+
+## 📚 Rotas da API
+
+### Eventos
+
+[tabela com rotas]
+
+### Participantes
+
+[tabela com rotas]
+
+### Inscrições
+
+[tabela com rotas]
+
+### Notificações
+
+[tabela com rotas]
+
+### Exportação
+
+[tabela com rotas]
+
+---
+
+## 🛠️ Tecnologias
+
+| Tecnologia           | Finalidade                     |
+| -------------------- | ------------------------------ |
+| Node.js              | Runtime                        |
+| Express.js           | Framework web                  |
+| MariaDB              | Banco de dados                 |
+| Sequelize            | ORM                            |
+| Nodemailer + MailPit | Envio de e-mails (teste local) |
+| Swagger              | Documentação                   |
+| Multer               | Upload de arquivos             |
+
+---
+
 
 ## ️ Tecnologias
 
