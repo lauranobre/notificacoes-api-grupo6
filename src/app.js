@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
+const authRoutes = require("./routes/authRoutes");
 
 //Registrar observers
 require('./events/notificacaoObserver');
@@ -34,6 +35,7 @@ app.use("/eventos", eventoRoutes);
 app.use("/participantes", participanteRoutes);
 app.use("/inscricoes", inscricaoRoutes);
 app.use('/exportar', exportRoutes);
+app.use("/auth", authRoutes);
 
 // Rota raiz
 app.get("/", (req, res) => {

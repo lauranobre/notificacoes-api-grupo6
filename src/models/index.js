@@ -4,6 +4,7 @@ const Evento = require("./EventoModel"); //
 const Participante = require("./ParticipanteModel");
 const Inscricao = require("./InscricaoModel");
 const Notificacao = require("./NotificacaoModel");
+const Usuario = require("./UsuarioModel");
 //essas ultimas 4 linhas importam os modelos (classe que representa as tabelas no banco)
 
 // ── Relacionamentos ──
@@ -49,4 +50,5 @@ module.exports = {
     Participante,
     Inscricao,
     Notificacao,
+    Usuario,
 };

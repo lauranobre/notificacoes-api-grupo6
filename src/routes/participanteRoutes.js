@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const ParticipanteController = require("../controllers/ParticipanteController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -62,16 +63,8 @@ router.get("/", ParticipanteController.index);
  *     responses:
  *       200:
  *         description: Participante encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Participante'
  *       404:
  *         description: Participante não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
 router.get("/:id", ParticipanteController.show);
 
@@ -81,6 +74,8 @@ router.get("/:id", ParticipanteController.show);
  *   post:
  *     summary: Criar um novo participante
  *     tags: [Participantes]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -103,18 +98,14 @@ router.get("/:id", ParticipanteController.show);
  *         description: Participante criado com sucesso
  *       400:
  *         description: Dados inválidos
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  *       409:
  *         description: E-mail já cadastrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.post("/", ParticipanteController.store);
+router.post(
+  "/",
+  authMiddleware,
+  ParticipanteController.store
+);
 
 /**
  * @swagger
@@ -122,6 +113,8 @@ router.post("/", ParticipanteController.store);
  *   put:
  *     summary: Atualizar um participante
  *     tags: [Participantes]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -148,24 +141,16 @@ router.post("/", ParticipanteController.store);
  *         description: Participante atualizado
  *       400:
  *         description: Dados inválidos
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  *       404:
  *         description: Participante não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  *       409:
  *         description: E-mail já cadastrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.put("/:id", ParticipanteController.update);
+router.put(
+  "/:id",
+  authMiddleware,
+  ParticipanteController.update
+);
 
 /**
  * @swagger
@@ -173,6 +158,8 @@ router.put("/:id", ParticipanteController.update);
  *   delete:
  *     summary: Deletar um participante
  *     tags: [Participantes]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -185,11 +172,13 @@ router.put("/:id", ParticipanteController.update);
  *         description: Participante deletado
  *       404:
  *         description: Participante não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
+ *       403:
+ *         description: Acesso negado
  */
-router.delete("/:id", ParticipanteController.destroy);
+router.delete(
+  "/:id",
+  authMiddleware,
+  ParticipanteController.destroy
+);
 
 module.exports = router;

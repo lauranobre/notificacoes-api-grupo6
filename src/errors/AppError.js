@@ -1,4 +1,3 @@
-
 //código limpo e refatorado
 class AppError extends Error {
   constructor(mensagem, statusCode) {
@@ -25,8 +24,16 @@ class ValidationError extends AppError {
   }
 }
 
+class UnauthorizedError extends AppError {
+  constructor(mensagem = "Não autorizado") {
+    super(mensagem, 401);
+    this.name = "UnauthorizedError";
+  }
+}
+
 module.exports = {
   AppError,
   NotFoundError,
   ValidationError,
+  UnauthorizedError,
 };

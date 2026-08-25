@@ -1,0 +1,908 @@
+{
+	"log": {
+		"version": "1.2",
+		"creator": {
+			"name": "Insomnia REST Client",
+			"version": "insomnia.desktop.app:v13.1.0"
+		},
+		"entries": [
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 25.638,
+				"request": {
+					"method": "GET",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "867"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"363-XBbcHqYsjObVdCx5UItWp8/vXcw\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:47:14 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 867,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"dados\":[{\"id\":3,\"nome\":\"Palestra sobre APIs REST\",\"descricao\":\"Como construir APIs profissionais\",\"data\":\"2025-10-10T14:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":50,\"banner\":null,\"createdAt\":\"2026-05-26T12:46:55.000Z\",\"updatedAt\":\"2026-05-26T12:46:55.000Z\"},{\"id\":5,\"nome\":\"Workshop de Node.js SENAI\",\"descricao\":\"Uma aula prática sobre APIs REST e Notificações.\",\"data\":\"2026-07-20T00:00:00.000Z\",\"local\":\"Auditório Principal\",\"capacidade\":null,\"banner\":null,\"createdAt\":\"2026-06-16T11:07:42.000Z\",\"updatedAt\":\"2026-06-16T11:07:42.000Z\"},{\"id\":6,\"nome\":\"Workshop de Node.js Atualizado\",\"descricao\":\"Evento atualizado com sucesso\",\"data\":\"2026-09-20T00:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":40,\"banner\":null,\"createdAt\":\"2026-08-25T17:13:45.000Z\",\"updatedAt\":\"2026-08-25T17:17:25.000Z\"}],\"total\":3,\"pagina\":1,\"porPagina\":10,\"totalPaginas\":1}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 25.638,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "10"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 56.33,
+				"request": {
+					"method": "DELETE",
+					"url": "http://localhost:3000/eventos/2",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJvcmdAZXZlbnRvLmNvbSIsImlhdCI6MTc4NzY3OTk5OSwiZXhwIjoxNzg3NjgzNTk5fQ.FhFs2ptKJHeJV-zcBTmCnPZRFTg8xV6bRGs_TfwabBM"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "",
+						"text": ""
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 204,
+					"statusText": "No Content",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:47:01 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 0,
+						"mimeType": "",
+						"text": ""
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 56.33,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "9"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 22.216,
+				"request": {
+					"method": "PUT",
+					"url": "http://localhost:3000/eventos/6",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJvcmdAZXZlbnRvLmNvbSIsImlhdCI6MTc4NzY3NTA5MSwiZXhwIjoxNzg3Njc4NjkxfQ.pBQ4UNserU9kkFbuwFTstbuDLd2e1Cr1CO6diWp3bJw"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop de Node.js Atualizado\",\n  \"descricao\": \"Evento atualizado com sucesso\",\n  \"data\": \"2026-09-20\",\n  \"local\": \"SENAI - Sala 5\",\n  \"capacidade\": 40\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "259"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"103-9uWngKie/ivFbRykr68vyy7Q/xw\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:17:25 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 259,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":6,\"nome\":\"Workshop de Node.js Atualizado\",\"descricao\":\"Evento atualizado com sucesso\",\"data\":\"2026-09-20T00:00:00.000Z\",\"local\":\"SENAI - Sala 5\",\"capacidade\":40,\"banner\":null,\"createdAt\":\"2026-08-25T17:13:45.000Z\",\"updatedAt\":\"2026-08-25T17:17:25.590Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 22.216,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "8"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 42.846000000000004,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJvcmdAZXZlbnRvLmNvbSIsImlhdCI6MTc4NzY3NTA5MSwiZXhwIjoxNzg3Njc4NjkxfQ.pBQ4UNserU9kkFbuwFTstbuDLd2e1Cr1CO6diWp3bJw"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop de Node.js\",\n  \"descricao\": \"Aprendendo Node.js e APIs\",\n  \"data\": \"2026-09-15\",\n  \"local\": \"SENAI - Sala 3\",\n  \"capacidade\": 30\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "230"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"e6-I+Oj6DDKAG3soM5X/1Cx0ju8Ph8\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:13:45 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 230,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":6,\"nome\":\"Workshop de Node.js\",\"descricao\":\"Aprendendo Node.js e APIs\",\"data\":\"2026-09-15T00:00:00.000Z\",\"local\":\"SENAI - Sala 3\",\"capacidade\":30,\"updatedAt\":\"2026-08-25T17:13:45.762Z\",\"createdAt\":\"2026-08-25T17:13:45.762Z\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 42.846000000000004,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "7"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 4.257000000000001,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Authorization",
+							"value": "Bearer token-invalido"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Evento Teste\",\n  \"descricao\": \"Teste de autenticação\",\n  \"data\": \"2026-09-15\",\n  \"local\": \"SENAI\",\n  \"capacidade\": 30\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1338"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"53a-uX+QcD7osn7nUyHwCnXIfHh0yME\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:10:21 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1338,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"UnauthorizedError\",\"mensagem\":\"Token inválido ou expirado\",\"statusCode\":401,\"stack\":\"UnauthorizedError: Token inválido ou expirado\\n    at authMiddleware (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\middlewares\\\\authMiddleware.js:18:14)\\n    at Layer.handleRequest (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\layer.js:152:17)\\n    at next (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\route.js:157:13)\\n    at Route.dispatch (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\route.js:117:3)\\n    at handle (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:435:11)\\n    at Layer.handleRequest (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\layer.js:152:17)\\n    at D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:295:15\\n    at processParams (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:582:12)\\n    at next (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:291:5)\\n    at Function.handle (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:186:3)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 4.257000000000001,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "6"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 3.525,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/eventos",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"nome\": \"Workshop de Node.js\",\n  \"descricao\": \"Aprendendo Node.js e APIs\",\n  \"data\": \"2026-09-15\",\n  \"local\": \"SENAI - Sala 3\",\n  \"capacidade\": 30\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1323"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"52b-0RKTFNEVTBXAN5+8iCqK+rEf4r8\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 16:57:36 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1323,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"UnauthorizedError\",\"mensagem\":\"Token não fornecido\",\"statusCode\":401,\"stack\":\"UnauthorizedError: Token não fornecido\\n    at authMiddleware (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\middlewares\\\\authMiddleware.js:8:21)\\n    at Layer.handleRequest (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\layer.js:152:17)\\n    at next (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\route.js:157:13)\\n    at Route.dispatch (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\route.js:117:3)\\n    at handle (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:435:11)\\n    at Layer.handleRequest (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\lib\\\\layer.js:152:17)\\n    at D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:295:15\\n    at processParams (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:582:12)\\n    at next (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:291:5)\\n    at Function.handle (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\router\\\\index.js:186:3)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 3.525,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "5"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 79.401,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/auth/login",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{\n  \"email\": \"org@evento.com\",\n  \"senha\": \"senhaerrada\"\n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 401,
+					"statusText": "Unauthorized",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "387"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"183-O1cMlxcsK1fYHRHJEadhJKadGto\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 16:56:03 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 387,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"UnauthorizedError\",\"mensagem\":\"E-mail ou senha inválidos\",\"statusCode\":401,\"stack\":\"UnauthorizedError: E-mail ou senha inválidos\\n    at Object.login (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\AuthService.js:20:30)\\n    at async login (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\AuthController.js:14:27)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 79.401,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "4"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 157.542,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/auth/login",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{ \n\t\"email\": \"org@evento.com\", \n\t\"senha\": \"123456\" \n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "248"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"f8-d6HXxgFVdcb3TuLpUQ/amR96clY\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 16:24:51 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 248,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJvcmdAZXZlbnRvLmNvbSIsImlhdCI6MTc4NzY3NTA5MSwiZXhwIjoxNzg3Njc4NjkxfQ.pBQ4UNserU9kkFbuwFTstbuDLd2e1Cr1CO6diWp3bJw\",\"usuario\":{\"id\":1,\"nome\":\"Organizador\",\"email\":\"org@evento.com\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 157.542,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "3"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 273.551,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/auth/login",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{ \n\t\"email\": \"org@evento.com\", \n\t\"senha\": \"123456\" \n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 200,
+					"statusText": "OK",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "248"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"f8-fPxBtS5XXlFJdUM62CechZxlk1o\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 17:46:39 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 248,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJvcmdAZXZlbnRvLmNvbSIsImlhdCI6MTc4NzY3OTk5OSwiZXhwIjoxNzg3NjgzNTk5fQ.FhFs2ptKJHeJV-zcBTmCnPZRFTg8xV6bRGs_TfwabBM\",\"usuario\":{\"id\":1,\"nome\":\"Organizador\",\"email\":\"org@evento.com\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 273.551,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "3 (novamente)"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 301.18699999999995,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/auth/registrar",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{ \n\t\"nome\": \"Organizador\", \n\t\"email\": \"org@evento.com\", \n\t\"senha\": \"123456\" \n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 201,
+					"statusText": "Created",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "54"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"36-+WkyYit5NULQDvIIyRJ5chFKlIk\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 16:23:43 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 54,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"id\":1,\"nome\":\"Organizador\",\"email\":\"org@evento.com\"}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 301.18699999999995,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "2"
+			},
+			{
+				"startedDateTime": "2026-08-25T18:00:33.358Z",
+				"time": 118.222,
+				"request": {
+					"method": "POST",
+					"url": "http://localhost:3000/auth/registrar",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"queryString": [],
+					"postData": {
+						"mimeType": "application/json",
+						"text": "{ \n\t\"nome\": \"Organizador\", \n\t\"email\": \"org@evento.com\", \n\t\"senha\": \"123456\" \n}"
+					},
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"response": {
+					"status": 409,
+					"statusText": "Conflict",
+					"httpVersion": "HTTP/1.1",
+					"cookies": [],
+					"headers": [
+						{
+							"name": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"name": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"name": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"name": "Content-Length",
+							"value": "1149"
+						},
+						{
+							"name": "ETag",
+							"value": "W/\"47d-t5hSRwX+Z1h57eNyW84inKaYnoc\""
+						},
+						{
+							"name": "Date",
+							"value": "Tue, 25 Aug 2026 16:54:44 GMT"
+						},
+						{
+							"name": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"name": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"content": {
+						"size": 1149,
+						"mimeType": "application/json; charset=utf-8",
+						"text": "{\"erro\":{\"tipo\":\"ConflictError\",\"mensagem\":\"Registro duplicado: email must be unique\",\"statusCode\":409,\"stack\":\"Error\\n    at Query.run (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\dialects\\\\mysql\\\\query.js:52:25)\\n    at D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\sequelize.js:315:28\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\\n    at async MySQLQueryInterface.insert (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\dialects\\\\abstract\\\\query-interface.js:308:21)\\n    at async model.save (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\model.js:2490:35)\\n    at async Usuario.create (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\node_modules\\\\sequelize\\\\lib\\\\model.js:1362:12)\\n    at async Object.registrar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\services\\\\AuthService.js:11:21)\\n    at async registrar (D:\\\\2DEV\\\\Aula arquivos - PBE2\\\\notificacoes-api-grupo6\\\\src\\\\controllers\\\\AuthController.js:4:25)\"}}"
+					},
+					"redirectURL": "",
+					"headersSize": -1,
+					"bodySize": -1
+				},
+				"cache": {},
+				"timings": {
+					"blocked": -1,
+					"dns": -1,
+					"connect": -1,
+					"send": 0,
+					"wait": 118.222,
+					"receive": 0,
+					"ssl": -1
+				},
+				"comment": "1"
+			}
+		]
+	}
+}

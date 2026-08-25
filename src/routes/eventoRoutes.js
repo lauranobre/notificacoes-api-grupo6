@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+
 const EventoController = require("../controllers/EventoController");
 const upload = require("../config/upload");
 const cacheMiddleware = require("../middlewares/cacheMiddleware");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 /**
  * @swagger
@@ -96,33 +98,26 @@ const cacheMiddleware = require("../middlewares/cacheMiddleware");
  *     responses:
  *       200:
  *         description: Lista de eventos
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 dados:
- *                   type: array
- *                   items:
- *                     $ref: '#/components/schemas/Evento'
- *                 total:
- *                   type: integer
- *                 pagina:
- *                   type: integer
- *                 porPagina:
- *                   type: integer
- *                 totalPaginas:
- *                   type: integer
  *       500:
  *         description: Erro interno
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
 router.get("/", cacheMiddleware(30), EventoController.index);
 
-router.get("/futuros", cacheMiddleware(30), EventoController.listarFuturos);
+/**
+ * @swagger
+ * /eventos/futuros:
+ *   get:
+ *     summary: Listar eventos futuros
+ *     tags: [Eventos]
+ *     responses:
+ *       200:
+ *         description: Lista de eventos futuros
+ */
+router.get(
+  "/futuros",
+  cacheMiddleware(30),
+  EventoController.listarFuturos
+);
 
 /**
  * @swagger
@@ -130,6 +125,8 @@ router.get("/futuros", cacheMiddleware(30), EventoController.listarFuturos);
  *   post:
  *     summary: Fazer upload do banner do evento
  *     tags: [Eventos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -146,46 +143,50 @@ router.get("/futuros", cacheMiddleware(30), EventoController.listarFuturos);
  *               banner:
  *                 type: string
  *                 format: binary
- *                 description: Imagem do banner (JPEG, PNG, GIF ou WebP)
+ *                 description: Imagem do banner
  *     responses:
  *       200:
  *         description: Banner atualizado
  *       400:
  *         description: Arquivo inválido
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  *       404:
  *         description: Evento não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
-  try {
-    const { Evento } = require('../models');
-    const evento = await Evento.findByPk(req.params.id);
+router.post(
+  "/:id/banner",
+  authMiddleware,
+  upload.single("banner"),
+  async (req, res, next) => {
+    try {
+      const { Evento } = require("../models");
 
-    if (!evento) {
-      return res.status(404).json({ erro: 'Evento não encontrado' });
+      const evento = await Evento.findByPk(req.params.id);
+
+      if (!evento) {
+        return res.status(404).json({
+          erro: "Evento não encontrado",
+        });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({
+          erro: "Nenhum arquivo enviado",
+        });
+      }
+
+      await evento.update({
+        banner: `/uploads/${req.file.filename}`,
+      });
+
+      res.json({
+        mensagem: "Banner atualizado com sucesso",
+        banner: `/uploads/${req.file.filename}`,
+      });
+    } catch (erro) {
+      next(erro);
     }
-
-    if (!req.file) {
-      return res.status(400).json({ erro: 'Nenhum arquivo enviado' });
-    }
-
-    await evento.update({ banner: `/uploads/${req.file.filename}` });
-
-    res.json({
-      mensagem: 'Banner atualizado com sucesso',
-      banner: `/uploads/${req.file.filename}`,
-    });
-  } catch (erro) {
-    next(erro);
   }
-});
+);
 
 /**
  * @swagger
@@ -205,12 +206,12 @@ router.post('/:id/banner', upload.single('banner'), async (req, res, next) => {
  *         description: Evento encontrado
  *       404:
  *         description: Evento não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.get("/:id", cacheMiddleware(60), EventoController.show);
+router.get(
+  "/:id",
+  cacheMiddleware(60),
+  EventoController.show
+);
 
 /**
  * @swagger
@@ -218,17 +219,19 @@ router.get("/:id", cacheMiddleware(60), EventoController.show);
  *   post:
  *     summary: Criar um novo evento
  *     tags: [Eventos]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       201:
  *         description: Evento criado
  *       400:
  *         description: Dados inválidos
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.post("/", EventoController.store);
+router.post(
+  "/",
+  authMiddleware,
+  EventoController.store
+);
 
 /**
  * @swagger
@@ -236,6 +239,8 @@ router.post("/", EventoController.store);
  *   put:
  *     summary: Atualizar um evento
  *     tags: [Eventos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -247,12 +252,12 @@ router.post("/", EventoController.store);
  *         description: Evento atualizado
  *       404:
  *         description: Evento não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.put("/:id", EventoController.update);
+router.put(
+  "/:id",
+  authMiddleware,
+  EventoController.update
+);
 
 /**
  * @swagger
@@ -260,6 +265,8 @@ router.put("/:id", EventoController.update);
  *   delete:
  *     summary: Deletar um evento
  *     tags: [Eventos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -271,11 +278,11 @@ router.put("/:id", EventoController.update);
  *         description: Evento removido
  *       404:
  *         description: Evento não encontrado
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Erro'
  */
-router.delete("/:id", EventoController.destroy);
+router.delete(
+  "/:id",
+  authMiddleware,
+  EventoController.destroy
+);
 
 module.exports = router;
